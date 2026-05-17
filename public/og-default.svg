@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Siligurievent — Default Open Graph Image (1200×630)
+  ──────────────────────────────────────────────────────
+  Layout
+  ──────
+  • Background: warm ink-deep (`#0F0C09`) with a subtle brass mesh radial
+    + SVG turbulence grain (matches the M3 mesh + M1 grain recipes in
+    docs/03b §3b.3).
+  • Top-left corner: a slim hairline brass corner ornament.
+  • Center: the SE monogram in twoTone (ink + brass jasmine), then the
+    Siligurievent wordmark beneath it (cream-jasmine), then the tagline.
+  • Bottom right: the small seal (filled, brass) as a quiet stamp.
+  • A thin brass hairline runs horizontally across at y=590 — the seal of
+    quality reference.
+
+  Export-to-PNG/JPEG instructions:
+    sharp("og-default.svg").resize(1200, 630).png().toFile("og-default.png")
+    sharp("og-default.svg").resize(1200, 630).jpeg({ quality: 90 }).toFile("og-default.jpg")
+
+  Why SVG-first
+  ─────────────
+  Vercel's `<Image>` route handler can convert this on demand if we want
+  per-route OG; the static fallback used by Twitter / WhatsApp / iMessage
+  expects a raster, hence the export step.
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1200 630"
+  width="1200"
+  height="630"
+  role="img"
+  aria-labelledby="og-title og-desc"
+>
+  <title id="og-title">Siligurievent — Cinematic decor for North Bengal</title>
+  <desc id="og-desc">North Bengal&apos;s most cinematic event decorators — Siliguri, Bagdogra, Darjeeling, Jalpaiguri, Kalimpong, Gangtok.</desc>
+
+  <defs>
+    <!-- Warm-mesh radial backdrop (M3 from docs/03b §3b.3). -->
+    <radialGradient id="brassRadial" cx="20%" cy="22%" r="60%">
+      <stop offset="0%" stop-color="#A47A2C" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#0F0C09" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="saffronRadial" cx="85%" cy="80%" r="55%">
+      <stop offset="0%" stop-color="#6B1418" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#0F0C09" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Brass-grain noise overlay (M1 recipe). -->
+    <filter id="brassGrain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 0
+                              0 0 0 0 0
+                              0 0 0 0 0
+                              0 0 0 0.22 0"/>
+    </filter>
+  </defs>
+
+  <!-- 1 · base ink-deep canvas -->
+  <rect width="1200" height="630" fill="#0F0C09"/>
+  <!-- 2 · warm mesh -->
+  <rect width="1200" height="630" fill="url(#brassRadial)"/>
+  <rect width="1200" height="630" fill="url(#saffronRadial)" style="mix-blend-mode: multiply"/>
+  <!-- 3 · grain pass -->
+  <rect width="1200" height="630" filter="url(#brassGrain)" opacity="0.6"/>
+
+  <!-- ── Top-left corner ornament — brass right-angle hairline ────── -->
+  <g stroke="#A47A2C" stroke-width="1.2" fill="none" opacity="0.85">
+    <path d="M 48 48 L 132 48"/>
+    <path d="M 48 48 L 48 132"/>
+    <circle cx="48" cy="48" r="2" fill="#A47A2C" stroke="none"/>
+  </g>
+  <!-- Top-right matching corner -->
+  <g stroke="#A47A2C" stroke-width="1.2" fill="none" opacity="0.85">
+    <path d="M 1152 48 L 1068 48"/>
+    <path d="M 1152 48 L 1152 132"/>
+    <circle cx="1152" cy="48" r="2" fill="#A47A2C" stroke="none"/>
+  </g>
+  <!-- Bottom-left matching corner -->
+  <g stroke="#A47A2C" stroke-width="1.2" fill="none" opacity="0.85">
+    <path d="M 48 582 L 132 582"/>
+    <path d="M 48 582 L 48 498"/>
+    <circle cx="48" cy="582" r="2" fill="#A47A2C" stroke="none"/>
+  </g>
+  <!-- Bottom-right matching corner -->
+  <g stroke="#A47A2C" stroke-width="1.2" fill="none" opacity="0.85">
+    <path d="M 1152 582 L 1068 582"/>
+    <path d="M 1152 582 L 1152 498"/>
+    <circle cx="1152" cy="582" r="2" fill="#A47A2C" stroke="none"/>
+  </g>
+
+  <!-- ── SE Monogram — large, twoTone ─────────────────────────────── -->
+  <g transform="translate(548 130) scale(1.04)">
+    <!-- S -->
+    <path
+      d="M 50 22 C 42 18 28 18 22 26 C 16 34 18 44 28 48 C 36 50 44 50 50 50 C 56 50 52 56 46 60 C 36 64 24 64 20 72 C 16 80 22 86 32 86 C 40 86 46 84 50 80 L 48 78 C 44 82 38 84 32 84 C 24 84 18 80 20 74 C 24 68 36 66 46 62 C 54 58 56 50 50 48 C 44 46 36 46 28 46 C 22 44 18 36 24 30 C 30 22 42 22 50 24 Z"
+      fill="#F4ECDF"
+    />
+    <!-- E -->
+    <path
+      d="M 50 22 L 78 22 L 78 28 L 56 28 C 56 36 56 42 56 48 L 72 48 L 72 54 L 56 54 C 56 64 56 72 56 82 L 80 82 L 80 88 L 50 88 L 50 22 Z"
+      fill="#F4ECDF"
+    />
+    <!-- Bloom -->
+    <g fill="#A47A2C">
+      <path d="M 50 50 C 48 44 47 38 50 36 C 53 38 52 44 50 50 Z"/>
+      <path d="M 50 50 C 55 47 60 47 61 50 C 60 53 55 53 50 50 Z"/>
+      <path d="M 50 50 C 54 55 56 60 53 62 C 50 60 50 55 50 50 Z"/>
+      <path d="M 50 50 C 47 55 45 60 42 58 C 41 55 45 52 50 50 Z"/>
+      <path d="M 50 50 C 45 47 40 47 39 50 C 40 53 45 53 50 50 Z"/>
+      <circle cx="50" cy="50" r="1.6" fill="#F4ECDF"/>
+    </g>
+  </g>
+
+  <!-- ── Wordmark — cream-jasmine ──────────────────────────────────
+       Rendered as a manually-arranged Cormorant Garamond italic SVG text
+       block — the cleanest portable OG fallback. The actual hand-drawn
+       wordmark would explode the file size; for OG raster the system
+       font fallback is acceptable since this image will be exported to
+       PNG (raster, no client font cascade).
+  -->
+  <text
+    x="600"
+    y="380"
+    text-anchor="middle"
+    font-family="'Cormorant Garamond', 'Cormorant', Georgia, serif"
+    font-style="italic"
+    font-weight="500"
+    font-size="92"
+    letter-spacing="-2"
+    fill="#F4ECDF"
+  >Siligurievent</text>
+
+  <!-- Brass hairline divider beneath wordmark -->
+  <g opacity="0.7">
+    <path d="M 480 410 L 720 410" stroke="#A47A2C" stroke-width="1"/>
+    <circle cx="480" cy="410" r="2" fill="#A47A2C"/>
+    <circle cx="720" cy="410" r="2" fill="#A47A2C"/>
+  </g>
+
+  <!-- ── Tagline ───────────────────────────────────────────────────── -->
+  <text
+    x="600"
+    y="460"
+    text-anchor="middle"
+    font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="380"
+    font-size="22"
+    letter-spacing="0.4"
+    fill="#B8A992"
+  >Cinematic decor for North Bengal&apos;s celebrations.</text>
+
+  <!-- ── Location strip ────────────────────────────────────────────── -->
+  <text
+    x="600"
+    y="540"
+    text-anchor="middle"
+    font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="500"
+    font-size="14"
+    letter-spacing="4"
+    fill="#A47A2C"
+  >SILIGURI · BAGDOGRA · DARJEELING · KALIMPONG · JALPAIGURI · GANGTOK</text>
+
+  <!-- ── Bottom-right discreet domain ──────────────────────────────── -->
+  <text
+    x="1152"
+    y="600"
+    text-anchor="end"
+    font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="400"
+    font-size="16"
+    letter-spacing="1"
+    fill="#7A6E5E"
+  >siligurievent.com</text>
+</svg>

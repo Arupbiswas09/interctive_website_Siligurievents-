@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Siligurievent — Primary SVG Favicon
+  ────────────────────────────────────
+  • Optimised silhouette of the SE-monogram at 32×32.
+  • Brass jasmine bud baked in as a fill colour (`#A47A2C` — the
+    `--color-brass-leaf` token from docs/03b §3b.1).
+  • Ink spines in `#0F0C09` — the `--color-ink-deep` token.
+  • Background colour `#F4ECDF` (cream-jasmine) included as a small
+    rounded square plate so the mark also reads well on dark browser
+    chrome (Edge / Safari mobile pin).
+  • Path data is a copy of `monogram-paths.ts` "filled" variant — kept
+    in sync by hand. If you adjust the monogram geometry there, mirror
+    the change here.
+
+  Export-to-PNG instructions (manual, no tooling in this PR):
+    sharp:        sharp("favicon.svg").resize(32).png().toFile("favicon-32.png")
+    rsvg-convert: rsvg-convert -w 32 -h 32 favicon.svg -o favicon-32.png
+    inkscape:     inkscape favicon.svg --export-filename favicon-32.png \
+                   --export-width=32 --export-height=32
+  Repeat at 16, 48, 96, 192 for the legacy <link rel="icon"> set.
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100"
+  width="32"
+  height="32"
+  role="img"
+  aria-labelledby="title"
+>
+  <title id="title">Siligurievent</title>
+
+  <!-- Cream-jasmine background plate with hairline brass border.
+       Rounded corners (radius 12) read as luxe-stamp; sharp enough to feel
+       editorial. Drop this rect by setting `fill="none"` if you want the
+       transparent variant. -->
+  <rect x="4" y="4" width="92" height="92" rx="12" fill="#F4ECDF" stroke="#A47A2C" stroke-width="1"/>
+
+  <!-- S spine — ink-deep filled. -->
+  <path
+    d="M 50 22 C 42 18 28 18 22 26 C 16 34 18 44 28 48 C 36 50 44 50 50 50 C 56 50 52 56 46 60 C 36 64 24 64 20 72 C 16 80 22 86 32 86 C 40 86 46 84 50 80 L 48 78 C 44 82 38 84 32 84 C 24 84 18 80 20 74 C 24 68 36 66 46 62 C 54 58 56 50 50 48 C 44 46 36 46 28 46 C 22 44 18 36 24 30 C 30 22 42 22 50 24 Z"
+    fill="#0F0C09"
+  />
+
+  <!-- E spine — ink-deep filled. -->
+  <path
+    d="M 50 22 L 78 22 L 78 28 L 56 28 C 56 36 56 42 56 48 L 72 48 L 72 54 L 56 54 C 56 64 56 72 56 82 L 80 82 L 80 88 L 50 88 L 50 22 Z"
+    fill="#0F0C09"
+  />
+
+  <!-- Jasmine bloom — brass-leaf -->
+  <g fill="#A47A2C">
+    <path d="M 50 50 C 48 44 47 38 50 36 C 53 38 52 44 50 50 Z"/>
+    <path d="M 50 50 C 55 47 60 47 61 50 C 60 53 55 53 50 50 Z"/>
+    <path d="M 50 50 C 54 55 56 60 53 62 C 50 60 50 55 50 50 Z"/>
+    <path d="M 50 50 C 47 55 45 60 42 58 C 41 55 45 52 50 50 Z"/>
+    <path d="M 50 50 C 45 47 40 47 39 50 C 40 53 45 53 50 50 Z"/>
+    <circle cx="50" cy="50" r="1.6" fill="#0F0C09"/>
+  </g>
+</svg>
