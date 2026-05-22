@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { gsap } from "gsap";
@@ -14,20 +14,14 @@ if (typeof window !== "undefined") {
 /**
  * LenisProvider — smooth scroll synced with GSAP ScrollTrigger.
  *
- * Two non-obvious things this fixes:
- *
- * 1. `ScrollTrigger.defaults({ scroller })` tells every subsequent
- *    ScrollTrigger to read scroll position from our Lenis-driven proxy
- *    instead of `window`. Without it, pins + horizontal scrubs never
- *    release at the right scroll position.
- *
- * 2. Scroll-revealed sections were rendering blank because their
- *    `gsap.from(autoAlpha: 0)` state never resolved — the trigger had
- *    mis-measured the section position before images/fonts settled.
- *    We now refresh ScrollTrigger on a staggered schedule (50ms, 250ms,
- *    750ms, 1500ms, 3000ms), on the window `load` event, AND on every
- *    pathname change (client-side route nav). One of those will catch
- *    the right post-layout moment for every section.
+ *  - Lenis drives the scroll; on each `scroll` event we call
+ *    `ScrollTrigger.update()` so pins and scrubs stay in sync.
+ *  - A single `ResizeObserver` on `document.body` debounces
+ *    `ScrollTrigger.refresh()` so we don't thrash layout on every
+ *    font swap, image decode, or async section mount.
+ *  - On route change we kill stale triggers (their DOM is gone), run
+ *    one debounced refresh, and use Lenis to jump to the top so we
+ *    don't bypass its internal scroll state.
  */
 export function LenisProvider({
   children,
@@ -36,6 +30,7 @@ export function LenisProvider({
 }): React.ReactElement {
   const prefersReducedMotion = useReducedMotion();
   const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -44,31 +39,7 @@ export function LenisProvider({
       smoothWheel: !prefersReducedMotion,
       touchMultiplier: 1.4,
     });
-
-    const scroller = document.documentElement;
-
-    ScrollTrigger.scrollerProxy(scroller, {
-      scrollTop(value) {
-        if (arguments.length > 0 && typeof value === "number") {
-          lenis.scrollTo(value, { immediate: true });
-          return value;
-        }
-        return lenis.animatedScroll;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          right: window.innerWidth,
-          bottom: window.innerHeight,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-      pinType: scroller.style.transform ? "transform" : "fixed",
-    });
-
-    ScrollTrigger.defaults({ scroller });
+    lenisRef.current = lenis;
 
     const onScroll = (): void => ScrollTrigger.update();
     lenis.on("scroll", onScroll);
@@ -79,68 +50,57 @@ export function LenisProvider({
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
-    const refresh = (): void => {
-      ScrollTrigger.refresh();
+    let refreshTimer: number | null = null;
+    const refreshDebounced = (): void => {
+      if (refreshTimer !== null) window.clearTimeout(refreshTimer);
+      refreshTimer = window.setTimeout(() => {
+        ScrollTrigger.refresh();
+        refreshTimer = null;
+      }, 80);
     };
 
-    // Staggered refresh schedule — catches the moment when layout settles
-    // after font swap, hero image decoding, and async section mounts.
-    const refreshTimings = [50, 250, 750, 1500, 3000];
-    const settleTimers = refreshTimings.map((ms) =>
-      window.setTimeout(refresh, ms),
-    );
+    // One observer covers font-swap, image decode, async mount, dynamic
+    // section growth — all the things the old staggered refresh schedule
+    // was guessing at.
+    const ro = new ResizeObserver(refreshDebounced);
+    ro.observe(document.body);
 
-    // Once all images are loaded the layout height is final.
-    const onWindowLoad = (): void => refresh();
+    // Final settle after document `load` (last image decoded).
+    const onWindowLoad = (): void => ScrollTrigger.refresh();
     if (document.readyState === "complete") {
       onWindowLoad();
     } else {
       window.addEventListener("load", onWindowLoad, { once: true });
     }
 
-    window.addEventListener("resize", refresh);
-
     return (): void => {
-      settleTimers.forEach((t) => window.clearTimeout(t));
+      if (refreshTimer !== null) window.clearTimeout(refreshTimer);
+      ro.disconnect();
       window.removeEventListener("load", onWindowLoad);
-      window.removeEventListener("resize", refresh);
       gsap.ticker.remove(raf);
       lenis.off("scroll", onScroll);
-      ScrollTrigger.defaults({ scroller: undefined });
-      ScrollTrigger.scrollerProxy(scroller, undefined);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, [prefersReducedMotion]);
 
   // On every client-side route change, kill any stale ScrollTriggers from
   // the previous page (their underlying DOM nodes are gone) and re-measure
-  // the new layout. Without this, navigating from /services/haldi to
-  // /services/mehendi leaves the new page with mis-positioned triggers
-  // and reveal-on-scroll sections rendering blank.
+  // the new layout. Scroll-to-top goes through Lenis so its internal
+  // animatedScroll value stays in sync (a raw window.scrollTo would jolt
+  // on the next wheel event).
   useEffect(() => {
-    // Kill triggers whose trigger element is no longer in the document.
     ScrollTrigger.getAll().forEach((t) => {
       const tr = t.trigger as Element | null | undefined;
-      if (tr && !document.contains(tr)) {
-        t.kill();
-      }
+      if (tr && !document.contains(tr)) t.kill();
     });
 
-    // Refresh on the next frame and again after a beat — new components
-    // may not have laid out yet.
-    const t1 = window.requestAnimationFrame(() => ScrollTrigger.refresh());
-    const t2 = window.setTimeout(() => ScrollTrigger.refresh(), 300);
-    const t3 = window.setTimeout(() => ScrollTrigger.refresh(), 1000);
+    const raf = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
 
-    // Reset scroll to top so the new page starts at its hero, not
-    // mid-page (mirrors browser behaviour for hard nav).
-    window.scrollTo(0, 0);
-
-    return () => {
-      window.cancelAnimationFrame(t1);
-      window.clearTimeout(t2);
-      window.clearTimeout(t3);
-    };
+    return () => window.cancelAnimationFrame(raf);
   }, [pathname]);
 
   return <>{children}</>;

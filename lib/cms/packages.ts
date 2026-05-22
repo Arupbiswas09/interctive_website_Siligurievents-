@@ -11,6 +11,7 @@
  *     CMS helpers used by public pages.
  */
 
+import { cacheLife, cacheTag } from "next/cache";
 import type { PriceBand } from "@/lib/seo/schemas";
 
 export type PackageTier = "essence" | "signature" | "atelier";
@@ -383,18 +384,27 @@ const PACKAGES: ReadonlyArray<Package> = [
  * Server Component to call.
  */
 export async function getPackages(): Promise<ReadonlyArray<Package>> {
+  "use cache";
+  cacheLife("max");
+  cacheTag("packages:index");
   return PACKAGES;
 }
 
 export async function getPackagesByCategory(
   category: PackageCategory,
 ): Promise<ReadonlyArray<Package>> {
+  "use cache";
+  cacheLife("max");
+  cacheTag(`packages:category:${category}`);
   return PACKAGES.filter((p) => p.category === category);
 }
 
 export async function getCategories(): Promise<
   ReadonlyArray<PackageCategoryMeta>
 > {
+  "use cache";
+  cacheLife("max");
+  cacheTag("packages:index");
   return PACKAGE_CATEGORIES;
 }
 

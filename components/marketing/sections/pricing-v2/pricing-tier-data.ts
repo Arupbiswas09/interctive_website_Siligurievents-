@@ -44,7 +44,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Haldi / Gaye Holud",
 			image:
-				"https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1200&q=80",
+				"/images/marketing/work-03.jpg",
 			inclusions: [
 				"Marigold canopy + chowki",
 				"Brass thali stands × 4",
@@ -55,7 +55,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Mehendi",
 			image:
-				"https://images.unsplash.com/photo-1590075865003-e48277fda558?auto=format&fit=crop&w=1200&q=80",
+				"/images/work/work-01.webp",
 			inclusions: [
 				"Low-seating gallery",
 				"Brass cone bowls",
@@ -66,7 +66,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Engagement",
 			image:
-				"https://images.unsplash.com/photo-1530023367847-a683933f4172?auto=format&fit=crop&w=1200&q=80",
+				"/images/work/work-05.webp",
 			inclusions: [
 				"Champagne bar",
 				"Step-and-repeat backdrop",
@@ -79,7 +79,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Haldi / Gaye Holud",
 			image:
-				"https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1200&q=80",
+				"/images/marketing/work-05.jpg",
 			inclusions: [
 				"Marigold + jasmine double canopy",
 				"Brass thali stands × 8",
@@ -92,7 +92,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Mehendi",
 			image:
-				"https://images.unsplash.com/photo-1590075865003-e48277fda558?auto=format&fit=crop&w=1200&q=80",
+				"/images/marketing/work-05.jpg",
 			inclusions: [
 				"Low-seat majlis with 60 cushions",
 				"Brass cone bowls × 30",
@@ -105,7 +105,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Engagement",
 			image:
-				"https://images.unsplash.com/photo-1530023367847-a683933f4172?auto=format&fit=crop&w=1200&q=80",
+				"/images/marketing/work-05.jpg",
 			inclusions: [
 				"Champagne tower + mocktail bar",
 				"Step-and-repeat with brass etching",
@@ -120,7 +120,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Sangeet",
 			image:
-				"https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+				"/media/decor-pairs/mandap-01-day.avif",
 			inclusions: [
 				"Editorial stage with three-act lighting",
 				"Choreographer-paced reveal moments",
@@ -134,7 +134,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Bengali Bibaho",
 			image:
-				"https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=80",
+				"/images/work/work-01.webp",
 			inclusions: [
 				"Topor-and-mukut mandap with brass spires",
 				"Shankha-and-conch sound design",
@@ -148,7 +148,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Reception",
 			image:
-				"https://images.unsplash.com/photo-1530023367847-a683933f4172?auto=format&fit=crop&w=1200&q=80",
+				"/images/work/work-01.webp",
 			inclusions: [
 				"Editorial round-table styling for 400",
 				"Crystal chandelier overhead grid",
@@ -164,7 +164,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Destination Wedding",
 			image:
-				"https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=80",
+				"/images/work/work-05.webp",
 			inclusions: [
 				"Three-day cinematic décor arc",
 				"Sangeet, Bibaho and Reception zones",
@@ -179,7 +179,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Cinematic Reception",
 			image:
-				"https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?auto=format&fit=crop&w=1200&q=80",
+				"/images/work/work-01.webp",
 			inclusions: [
 				"Custom-built mandap pavilion",
 				"Twelve-piece live orchestra",
@@ -194,7 +194,7 @@ export const PACKAGES_BY_TIER: Record<TierKey, ReadonlyArray<Package>> = {
 		{
 			ceremony: "Multi-Day Showpiece",
 			image:
-				"https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1200&q=80",
+				"/images/work/work-05.webp",
 			inclusions: [
 				"Four ceremonies, one creative direction",
 				"Dedicated art director + production lead",

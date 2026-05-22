@@ -7,19 +7,12 @@
  */
 
 import { CtaCloser } from "@/components/marketing/sections/cta-closer";
-
-const WHATSAPP_PHONE =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "+91XXXXXXXXXX";
-
-function whatsappHref(): string {
-  const clean = WHATSAPP_PHONE.replace(/[^0-9]/g, "");
-  const message = encodeURIComponent(
-    "Hi Siliguri Event, I would like to plan an event. Could you share some options?",
-  );
-  return `https://wa.me/${clean}?text=${message}`;
-}
+import { getWhatsAppHref } from "@/lib/cms/site-settings";
 
 export function ServicesHubCtaCloser(): React.ReactElement {
+  const whatsappHref = getWhatsAppHref(
+    "Hi Siliguri Event, I would like to plan an event. Could you share some options?",
+  );
   return (
     <CtaCloser
       tone="dark"
@@ -27,7 +20,7 @@ export function ServicesHubCtaCloser(): React.ReactElement {
       headline="Tell us the date. We'll design the rest."
       subline="A WhatsApp message reaches us inside an hour. A full inquiry — moodboard, palette and a phone call — usually inside two days."
       primaryCta={{ label: "Inquire", href: "/contact" }}
-      secondaryCta={{ label: "WhatsApp us", href: whatsappHref() }}
+      secondaryCta={{ label: "WhatsApp us", href: whatsappHref }}
     />
   );
 }

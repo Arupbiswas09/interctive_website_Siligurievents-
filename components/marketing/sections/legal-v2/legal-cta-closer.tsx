@@ -9,8 +9,8 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { CeremonyOrnament } from "@/components/illustrations/ceremony-ornaments";
+import { getSiteSettings } from "@/lib/cms/site-settings";
 
-const STUDIO_EMAIL = "hello@silsigurievent.com";
 const CONTACT_HREF = "/contact";
 
 type LegalCtaCloserProps = {
@@ -24,6 +24,7 @@ export function LegalCtaCloser({
   headline = "Questions about this?",
   subtitle = "Write to the studio — we reply on the same day, in plain English.",
 }: LegalCtaCloserProps): React.ReactElement {
+  const STUDIO_EMAIL = getSiteSettings().email;
   return (
     <section
       aria-label="Contact the studio"

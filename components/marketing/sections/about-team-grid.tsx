@@ -52,9 +52,8 @@ export function AboutTeamGrid({ team }: AboutTeamGridProps): React.ReactElement 
               >
                 <figure
                   className="relative aspect-[3/4] w-full overflow-hidden rounded-[var(--radius-sm)] bg-[color:var(--color-bg)]"
-                  aria-label={`TODO: ${member.name} portrait alt text`}
+                  aria-label={`Portrait of ${member.name}`}
                 >
-                  {/* TODO: replace with next/image once team photos land */}
                   <div
                     aria-hidden="true"
                     className="absolute inset-0"
@@ -64,7 +63,7 @@ export function AboutTeamGrid({ team }: AboutTeamGridProps): React.ReactElement 
                     }}
                   />
                   <figcaption className="sr-only">
-                    IMG: {member.imageUrl}
+                    {member.name}
                   </figcaption>
                 </figure>
 

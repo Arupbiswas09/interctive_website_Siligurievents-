@@ -47,19 +47,19 @@ const REGION_TAGS: Record<string, ReadonlyArray<RegionFilter>> = {
 /** Stable per-city Unsplash imagery — pulled from the curated decor pool. */
 const CITY_IMAGE: Record<string, string> = {
   siliguri:
-    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80",
+    "/images/marketing/work-05.jpg",
   bagdogra:
-    "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80",
+    "/images/marketing/work-01.jpg",
   darjeeling:
-    "https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?auto=format&fit=crop&w=1600&q=80",
+    "/images/marketing/work-03.jpg",
   kalimpong:
-    "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=1600&q=80",
+    "/images/marketing/hero-home-alt.jpg",
   jalpaiguri:
-    "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1600&q=80",
+    "/images/hero-01.webp",
   gangtok:
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80",
+    "/images/locations/kalimpong-hero.jpg",
   dooars:
-    "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1600&q=80",
+    "/images/marketing/work-01.jpg",
 };
 
 /** Approximate map pin positions inside the 800×500 SVG viewBox. */

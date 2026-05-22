@@ -7,16 +7,12 @@
 
 import { CtaCloser } from "@/components/marketing/sections/cta-closer";
 import type { Location } from "@/lib/cms/locations";
-
-const WHATSAPP_PHONE =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "+91XXXXXXXXXX";
+import { getWhatsAppHref } from "@/lib/cms/site-settings";
 
 function whatsappHref(city: string): string {
-  const clean = WHATSAPP_PHONE.replace(/[^0-9]/g, "");
-  const message = encodeURIComponent(
+  return getWhatsAppHref(
     `Hi Siliguri Event, I would like to plan an event in ${city}. Could you share some options?`,
   );
-  return `https://wa.me/${clean}?text=${message}`;
 }
 
 type LocationDetailCtaProps = {

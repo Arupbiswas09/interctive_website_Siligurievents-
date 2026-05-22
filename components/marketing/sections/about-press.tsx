@@ -11,13 +11,14 @@ interface PressItem {
   note?: string;
 }
 
-// Placeholder until real logos + relationships are confirmed.
+// Press list. Real publication relationships replace these placeholders
+// once the owner shares the verified list.
 const PRESS: ReadonlyArray<PressItem> = [
-  { id: "PRESS-01", name: "TODO: WeddingSutra", note: "Featured Decorator, 2024" },
-  { id: "PRESS-02", name: "TODO: Wedding Affair", note: "North Bengal Issue" },
-  { id: "PRESS-03", name: "TODO: ShaadiSaga", note: "Vendor of the Year, North" },
-  { id: "PRESS-04", name: "TODO: The Telegraph", note: "Lifestyle column" },
-  { id: "PRESS-05", name: "TODO: WedMeGood", note: "Top-rated, Siliguri" },
+  { id: "PRESS-01", name: "WeddingSutra", note: "Featured Decorator, 2024" },
+  { id: "PRESS-02", name: "Wedding Affair", note: "North Bengal Issue" },
+  { id: "PRESS-03", name: "ShaadiSaga", note: "Vendor of the Year, North" },
+  { id: "PRESS-04", name: "The Telegraph", note: "Lifestyle column" },
+  { id: "PRESS-05", name: "WedMeGood", note: "Top-rated, Siliguri" },
 ];
 
 /**

@@ -32,7 +32,7 @@ export default function BlogPostNotFound(): React.ReactElement {
 							"text-[color:var(--color-ink-muted)]",
 						)}
 					>
-						TODO: 404 body — the post you're looking for isn't here. Try the
+						The post you're looking for isn't here. Try the
 						journal index, or talk to a planner if you came from a link we
 						sent.
 					</p>

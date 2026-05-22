@@ -38,21 +38,21 @@ if (typeof window !== "undefined") {
 
 // ─── Photo pool (Unsplash hostnames are whitelisted in next.config) ──────
 const PHOTOS: ReadonlyArray<string> = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1590075865003-e48277fda558?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1532009324734-20a7a5813719?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1530023367847-a683933f4172?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1600&q=80",
+  "/images/services/svc-05.webp",
+  "/images/services/svc-03.webp",
+  "/media/decor-pairs/stage-01-day.avif",
+  "/images/work/work-05.webp",
+  "/images/work/work-05.webp",
+  "/media/decor-pairs/stage-01-night.avif",
+  "/images/marketing/work-02.jpg",
+  "/images/services/svc-03.webp",
+  "/media/decor-pairs/stage-01-night.avif",
+  "/images/marketing/work-02.jpg",
+  "/images/marketing/work-05.jpg",
+  "/images/marketing/work-02.jpg",
+  "/images/work/work-02.webp",
+  "/images/marketing/work-02.jpg",
+  "/images/services/svc-05.webp",
 ];
 
 // ─── Data model ──────────────────────────────────────────────────────────

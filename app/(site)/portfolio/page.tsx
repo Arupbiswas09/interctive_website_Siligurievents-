@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense, type ReactElement } from "react";
+
 import { GalleryHero } from "@/components/marketing/sections/gallery/gallery-hero";
 import { GalleryBentoGrid } from "@/components/marketing/sections/gallery/gallery-bento-grid";
 import { GalleryCtaCloser } from "@/components/marketing/sections/gallery/gallery-cta-closer";
@@ -33,7 +34,7 @@ export function generateMetadata(): Metadata {
 }
 
 // ---------------------------------------------------------------------------
-// Search params surface (Next.js 16: async)
+// Page — Server Component
 // ---------------------------------------------------------------------------
 
 interface PortfolioPageProps {
@@ -45,33 +46,28 @@ interface PortfolioPageProps {
   }>;
 }
 
-// ---------------------------------------------------------------------------
-// Page — Server Component
-// ---------------------------------------------------------------------------
-
-export default async function PortfolioPage({
+/**
+ * JSON-LD subtree — isolated in its own Suspense boundary so the cached
+ * `listProjects` fetch doesn't block the page shell (Cache Components
+ * contract).
+ */
+async function PortfolioJsonLd({
   searchParams,
 }: PortfolioPageProps): Promise<ReactElement> {
   const params = await searchParams;
-
   const category = params.category;
   const location = params.location;
   const year = params.year ? Number.parseInt(params.year, 10) : undefined;
   const page = params.page ? Math.max(1, Number.parseInt(params.page, 10)) : 1;
 
-  // CMS slice is retained purely to feed the CollectionPage JSON-LD so the
-  // schema stays content-rich even though the new bento grid uses its own
-  // editorial sample set. The visual section ignores `slice`.
-  const pageSize = 9;
   const slice = await listProjects({
     category,
     year,
     location,
     page: 1,
-    pageSize: pageSize * page,
+    pageSize: 9 * page,
   });
 
-  // JSON-LD: CollectionPage + BreadcrumbList (per task brief).
   const collectionSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -99,14 +95,23 @@ export default async function PortfolioPage({
     <>
       {jsonLdScript(collectionSchema)}
       {jsonLdScript(breadcrumb)}
+    </>
+  );
+}
 
-      <main id="main" className="relative">
-        <Suspense fallback={null}>
-          <GalleryHero />
-          <GalleryBentoGrid />
-          <GalleryCtaCloser />
-        </Suspense>
-      </main>
+export default function PortfolioPage({
+  searchParams,
+}: PortfolioPageProps): ReactElement {
+  return (
+    <>
+      <Suspense fallback={null}>
+        <PortfolioJsonLd searchParams={searchParams} />
+      </Suspense>
+      <Suspense fallback={null}>
+        <GalleryHero />
+        <GalleryBentoGrid />
+        <GalleryCtaCloser />
+      </Suspense>
     </>
   );
 }

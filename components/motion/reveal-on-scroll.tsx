@@ -68,6 +68,10 @@ export function RevealOnScroll({
           delay,
           ease: "cubic-bezier(0.16, 1, 0.3, 1)",
           scrollTrigger: { trigger: el, start, once: true },
+          // Release the GPU layer once the reveal lands.
+          onComplete: () => {
+            el.style.willChange = "auto";
+          },
         }
       );
     }, el);

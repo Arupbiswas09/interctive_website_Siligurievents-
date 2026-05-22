@@ -14,7 +14,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const HERO_IMAGE = "/ChatGPT Image May 16, 2026, 11_23_56 PM.png";
+const HERO_IMAGE = "/images/marketing/hero-mandap.png";
 
 const CATEGORIES: ReadonlyArray<{ label: string; icon: React.ReactElement }> = [
   {

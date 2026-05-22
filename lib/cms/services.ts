@@ -10,6 +10,8 @@
  * TODO(sprint-2): replace `MOCK_SERVICES` with a `getPayload()` query.
  */
 
+import { cacheLife, cacheTag } from "next/cache";
+import { pickSeedImage, poolForCategory, SEED_HERO } from "@/lib/media/seed-images";
 import type { PriceBand } from "@/lib/seo/schemas";
 
 // ---------------------------------------------------------------------------
@@ -118,29 +120,38 @@ const DEFAULT_PROCESS = [
 ] as const;
 
 // Stable placeholder projects until Payload + Gemini imagery land.
-const STUB_PROJECTS = (slug: string): ReadonlyArray<Project> => [
-  {
-    slug: `${slug}-signature-01`,
-    title: "TODO: Project name",
-    ceremony: "TODO: Ceremony",
-    location: "Siliguri",
-    year: 2025,
-  },
-  {
-    slug: `${slug}-signature-02`,
-    title: "TODO: Project name",
-    ceremony: "TODO: Ceremony",
-    location: "Darjeeling",
-    year: 2025,
-  },
-  {
-    slug: `${slug}-signature-03`,
-    title: "TODO: Project name",
-    ceremony: "TODO: Ceremony",
-    location: "Dooars",
-    year: 2024,
-  },
-];
+const STUB_PROJECTS = (
+  slug: string,
+  category: ServiceCategory,
+): ReadonlyArray<Project> => {
+  const pool = poolForCategory(category);
+  return [
+    {
+      slug: `${slug}-signature-01`,
+      title: "TODO: Project name",
+      ceremony: "TODO: Ceremony",
+      location: "Siliguri",
+      year: 2025,
+      coverImageUrl: pickSeedImage(pool, `${slug}-signature-01`),
+    },
+    {
+      slug: `${slug}-signature-02`,
+      title: "TODO: Project name",
+      ceremony: "TODO: Ceremony",
+      location: "Darjeeling",
+      year: 2025,
+      coverImageUrl: pickSeedImage(pool, `${slug}-signature-02`),
+    },
+    {
+      slug: `${slug}-signature-03`,
+      title: "TODO: Project name",
+      ceremony: "TODO: Ceremony",
+      location: "Dooars",
+      year: 2024,
+      coverImageUrl: pickSeedImage(pool, `${slug}-signature-03`),
+    },
+  ];
+};
 
 const STUB_FAQS: ReadonlyArray<FaqEntry> = [
   {
@@ -225,12 +236,13 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("wedding"),
+    signatureProjects: STUB_PROJECTS("wedding", "weddings"),
     faqs: STUB_FAQS,
     relatedSlugs: ["bengali-wedding", "haldi-gaye-holud", "sangeet", "reception"],
     priceBand: "₹₹",
     priceContext:
       "TODO: Most ₹₹ weddings land between 150–400 guests over 1–2 days, with mandap, reception stage and lighting in scope.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "wedding"),
   },
   {
     slug: "bengali-wedding",
@@ -271,12 +283,13 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("bengali-wedding"),
+    signatureProjects: STUB_PROJECTS("bengali-wedding", "weddings"),
     faqs: STUB_FAQS,
     relatedSlugs: ["wedding", "haldi-gaye-holud", "reception", "annaprashan-rice-ceremony"],
     priceBand: "₹₹",
     priceContext:
       "TODO: Most Bengali weddings we design are 150–500 guests across 2–3 ceremonies. The band reflects mandap + stage + reception scope.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "bengali-wedding"),
   },
   // ── Pre-wedding ─────────────────────────────────────────────────────────
   {
@@ -315,12 +328,13 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("haldi"),
+    signatureProjects: STUB_PROJECTS("haldi", "pre-wedding"),
     faqs: STUB_FAQS,
     relatedSlugs: ["mehendi", "sangeet", "bengali-wedding"],
     priceBand: "₹",
     priceContext:
       "TODO: Haldi setups are intimate — most ₹ events are 40–120 guests in a 4-hour morning window.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "haldi-gaye-holud"),
   },
   {
     slug: "mehendi",
@@ -358,11 +372,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("mehendi"),
+    signatureProjects: STUB_PROJECTS("mehendi", "pre-wedding"),
     faqs: STUB_FAQS,
     relatedSlugs: ["haldi-gaye-holud", "sangeet", "wedding"],
     priceBand: "₹",
     priceContext: "TODO: Mehendi evenings are typically 50–150 guests across 3–5 hours.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "mehendi"),
   },
   {
     slug: "sangeet",
@@ -401,12 +416,13 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("sangeet"),
+    signatureProjects: STUB_PROJECTS("sangeet", "pre-wedding"),
     faqs: STUB_FAQS,
     relatedSlugs: ["mehendi", "wedding", "reception"],
     priceBand: "₹₹",
     priceContext:
       "TODO: Sangeet evenings with stage + lighting + sound usually land in ₹₹ band for 150–400 guests.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "sangeet"),
   },
   {
     slug: "engagement-roka",
@@ -438,11 +454,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("engagement"),
+    signatureProjects: STUB_PROJECTS("engagement", "pre-wedding"),
     faqs: STUB_FAQS,
     relatedSlugs: ["wedding", "reception", "cocktail-party"],
     priceBand: "₹",
     priceContext: "TODO: Engagements are typically 30–100 guests in a tightly designed single setup.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "engagement-roka"),
   },
   {
     slug: "reception",
@@ -474,11 +491,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("reception"),
+    signatureProjects: STUB_PROJECTS("reception", "weddings"),
     faqs: STUB_FAQS,
     relatedSlugs: ["wedding", "cocktail-party", "sangeet"],
     priceBand: "₹₹",
     priceContext: "TODO: Receptions typically scale 200–600 guests in the ₹₹ band.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "reception"),
   },
   {
     slug: "cocktail-party",
@@ -506,11 +524,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("cocktail"),
+    signatureProjects: STUB_PROJECTS("cocktail", "weddings"),
     faqs: STUB_FAQS,
     relatedSlugs: ["reception", "sangeet", "corporate-events"],
     priceBand: "₹₹",
     priceContext: "TODO: Cocktail nights are typically 100–300 guests indoors.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "cocktail-party"),
   },
   // ── Family rituals ──────────────────────────────────────────────────────
   {
@@ -539,11 +558,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("birthday"),
+    signatureProjects: STUB_PROJECTS("birthday", "family-rituals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["anniversary", "baby-shower-godh-bharai", "annaprashan-rice-ceremony"],
     priceBand: "₹",
     priceContext: "TODO: Most birthday setups are 30–150 guests in a single room or lawn.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "birthday-party"),
   },
   {
     slug: "anniversary",
@@ -571,11 +591,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("anniversary"),
+    signatureProjects: STUB_PROJECTS("anniversary", "family-rituals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["birthday-party", "private-celebrations", "reception"],
     priceBand: "₹",
     priceContext: "TODO: Anniversaries are typically 50–200 guests.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "anniversary"),
   },
   {
     slug: "baby-shower-godh-bharai",
@@ -603,11 +624,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("baby-shower"),
+    signatureProjects: STUB_PROJECTS("baby-shower", "family-rituals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["annaprashan-rice-ceremony", "naamkaran", "birthday-party"],
     priceBand: "₹",
     priceContext: "TODO: Most godh bharai setups are 30–80 family guests.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "baby-shower-godh-bharai"),
   },
   {
     slug: "annaprashan-rice-ceremony",
@@ -635,11 +657,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("annaprashan"),
+    signatureProjects: STUB_PROJECTS("annaprashan", "family-rituals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["naamkaran", "baby-shower-godh-bharai", "bengali-wedding"],
     priceBand: "₹",
     priceContext: "TODO: Annaprashan setups are intimate — 30–80 guests is typical.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "annaprashan-rice-ceremony"),
   },
   {
     slug: "naamkaran",
@@ -667,11 +690,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("naamkaran"),
+    signatureProjects: STUB_PROJECTS("naamkaran", "family-rituals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["annaprashan-rice-ceremony", "baby-shower-godh-bharai"],
     priceBand: "₹",
     priceContext: "TODO: Naamkaran setups are 20–60 guests.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "naamkaran"),
   },
   {
     slug: "griha-pravesh",
@@ -699,11 +723,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("griha-pravesh"),
+    signatureProjects: STUB_PROJECTS("griha-pravesh", "family-rituals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["naamkaran", "private-celebrations", "lakshmi-puja"],
     priceBand: "₹",
     priceContext: "TODO: Griha pravesh setups are 30–100 guests, typically a half-day.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "griha-pravesh"),
   },
   // ── Corporate ───────────────────────────────────────────────────────────
   {
@@ -732,11 +757,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("corporate"),
+    signatureProjects: STUB_PROJECTS("corporate", "corporate"),
     faqs: STUB_FAQS,
     relatedSlugs: ["private-celebrations", "cocktail-party", "reception"],
     priceBand: "₹₹",
     priceContext: "TODO: Most corporate events we run are 100–500 attendees in a single ballroom or lawn.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "corporate-events"),
   },
   // ── Festivals ───────────────────────────────────────────────────────────
   {
@@ -765,11 +791,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("durga-puja"),
+    signatureProjects: STUB_PROJECTS("durga-puja", "festivals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["lakshmi-puja", "saraswati-puja", "private-celebrations"],
     priceBand: "₹₹",
     priceContext: "TODO: Themed community pandals range widely; the ₹₹ band reflects typical 4-day setups.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "durga-puja-decoration"),
   },
   {
     slug: "lakshmi-puja",
@@ -797,11 +824,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("lakshmi-puja"),
+    signatureProjects: STUB_PROJECTS("lakshmi-puja", "festivals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["durga-puja-decoration", "saraswati-puja", "griha-pravesh"],
     priceBand: "₹",
     priceContext: "TODO: Home Lakshmi Puja setups are usually 30–80 family + neighbours.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "lakshmi-puja"),
   },
   {
     slug: "saraswati-puja",
@@ -829,11 +857,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("saraswati-puja"),
+    signatureProjects: STUB_PROJECTS("saraswati-puja", "festivals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["durga-puja-decoration", "lakshmi-puja"],
     priceBand: "₹",
     priceContext: "TODO: Community Saraswati Pujas are typically 50–200 attendees over a single day.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "saraswati-puja"),
   },
   {
     slug: "private-celebrations",
@@ -861,11 +890,12 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
       },
     ],
     process: DEFAULT_PROCESS,
-    signatureProjects: STUB_PROJECTS("private-celebrations"),
+    signatureProjects: STUB_PROJECTS("private-celebrations", "family-rituals"),
     faqs: STUB_FAQS,
     relatedSlugs: ["anniversary", "birthday-party", "engagement-roka"],
     priceBand: "₹",
     priceContext: "TODO: Scope varies — most private celebrations land in ₹ for an intimate setup.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "private-celebrations"),
   },
 ];
 
@@ -912,7 +942,9 @@ export const SERVICE_CATEGORIES: ReadonlyArray<{
 
 /** Returns all services, sorted by category order then per-category order. */
 export async function getServices(): Promise<ReadonlyArray<Service>> {
-  // TODO(sprint-2): replace with getPayload().find({ collection: 'services', sort: 'order' })
+  "use cache";
+  cacheLife("max");
+  cacheTag("services:index");
   const sorted = [...MOCK_SERVICES].sort((a, b) => {
     if (a.category === b.category) return a.order - b.order;
     return a.category.localeCompare(b.category);
@@ -930,13 +962,18 @@ export async function getServicesByCategory(
 
 /** Returns a single service by slug, or `null` if not found. */
 export async function getServiceBySlug(slug: string): Promise<Service | null> {
-  // TODO(sprint-2): replace with getPayload().find({ collection: 'services', where: { slug: { equals: slug } }, limit: 1 })
+  "use cache";
+  cacheLife("max");
+  cacheTag(`service:${slug}`);
   const match = MOCK_SERVICES.find((s) => s.slug === slug);
   return match ?? null;
 }
 
 /** Returns all service slugs — used by `generateStaticParams`. */
 export async function getServiceSlugs(): Promise<ReadonlyArray<string>> {
+  "use cache";
+  cacheLife("max");
+  cacheTag("services:index");
   return MOCK_SERVICES.map((s) => s.slug);
 }
 

@@ -32,42 +32,42 @@ const TEAM: readonly TeamMember[] = [
     role: "Creative director",
     quote: "I draw light first. Always.",
     portrait:
-      "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=800&q=80",
+      "/images/services/svc-01.webp",
   },
   {
     name: "Riya Sen",
     role: "Floral lead",
     quote: "Marigold strings are an anchor, not a decoration.",
     portrait:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+      "/images/services/svc-01.webp",
   },
   {
     name: "Mihir Das",
     role: "Lighting designer",
     quote: "I design at 3200K. The rest is colour theory.",
     portrait:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+      "/images/work/work-04.webp",
   },
   {
     name: "Ananya Bose",
     role: "Production manager",
     quote: "If the brass is on time, the room is on time.",
     portrait:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=800&q=80",
+      "/images/services/svc-07.webp",
   },
   {
     name: "Soumya Banerjee",
     role: "Client relations",
     quote: "Plan for the elders. Everyone else follows.",
     portrait:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80",
+      "/images/services/svc-06.webp",
   },
   {
     name: "Tara Devi",
     role: "Sound + script",
     quote: "Shehnai or silence. Never both.",
     portrait:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
+      "/images/work/work-04.webp",
   },
 ] as const;
 

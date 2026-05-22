@@ -92,7 +92,7 @@ const FALLBACK_CHAPTERS: ReadonlyArray<CaseStudyChapter> = [
       "Our job was to make each evening feel like its own film while keeping the architecture continuous.",
     ],
     image:
-      "https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1600&q=80",
+      "/media/decor-pairs/mandap-01-night.avif",
     imageAlt: "Sketches and palette sample on the studio table",
   },
   {
@@ -102,7 +102,7 @@ const FALLBACK_CHAPTERS: ReadonlyArray<CaseStudyChapter> = [
       "We started with the light. Dawn for haldi, golden hour for mehendi, candle and chandelier for reception. The same courtyard, three temperatures.",
     ],
     image:
-      "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80",
+      "/media/decor-pairs/mandap-01-night.avif",
     imageAlt: "Mood board with marigold and brass references",
     quote: "Three rooms, one architecture, three temperatures of light.",
   },
@@ -114,7 +114,7 @@ const FALLBACK_CHAPTERS: ReadonlyArray<CaseStudyChapter> = [
       "Every element was tested in the workshop two weeks ahead — nothing arrived on site untried.",
     ],
     image:
-      "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1600&q=80",
+      "/images/work/work-05.webp",
     imageAlt: "Brass diya stands being prepared in the workshop",
   },
   {
@@ -125,7 +125,7 @@ const FALLBACK_CHAPTERS: ReadonlyArray<CaseStudyChapter> = [
       "The room was lit to its final cue before the first guest arrived.",
     ],
     image:
-      "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=1600&q=80",
+      "/images/marketing/work-01.jpg",
     imageAlt: "Family seated as the shehnai begins",
   },
   {
@@ -136,20 +136,20 @@ const FALLBACK_CHAPTERS: ReadonlyArray<CaseStudyChapter> = [
       "The album was bound in raw silk a fortnight after the last guest left.",
     ],
     image:
-      "https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?auto=format&fit=crop&w=1600&q=80",
+      "/images/marketing/work-01.jpg",
     imageAlt: "Bound silk album on the studio table",
   },
 ];
 
 const GALLERY_FALLBACK: ReadonlyArray<string> = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1590075865003-e48277fda558?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80",
+  "/media/decor-pairs/mandap-01-night.avif",
+  "/images/work/work-05.webp",
+  "/images/marketing/work-03.jpg",
+  "/media/decor-pairs/mandap-01-night.avif",
+  "/media/decor-pairs/mandap-01-day.avif",
+  "/images/work/work-05.webp",
+  "/images/marketing/work-01.jpg",
+  "/media/decor-pairs/mandap-01-night.avif",
 ];
 
 const CREDITS_FALLBACK: ReadonlyArray<CaseStudyCredit> = [

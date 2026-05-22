@@ -483,7 +483,7 @@ export function CtaInline({
 					"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent)] focus-visible:ring-offset-2",
 				)}
 			>
-				TODO: CTA — {label} →
+				{label} →
 			</Link>
 		</div>
 	);

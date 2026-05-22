@@ -45,7 +45,9 @@ export interface SitemapInputs {
 	hindiAvailable?: (path: string) => boolean;
 }
 
-const LOCALES: ReadonlyArray<Locale> = ["en", "hi"];
+// Hindi (`hi`) routes are not yet shipped. Until they exist, only emit
+// English entries so search engines don't crawl 404s.
+const LOCALES: ReadonlyArray<Locale> = ["en"];
 
 const HREFLANG: Record<Locale, string> = {
 	en: "en-IN",
@@ -106,10 +108,9 @@ export const PROGRAMMATIC_LOCATION_SLUGS = [
 /**
  * Build an alternates.languages map for a given path.
  */
-function buildHreflang(path: string, hindiAvailable: boolean): Record<string, string> {
+function buildHreflang(path: string, _hindiAvailable: boolean): Record<string, string> {
 	const out: Record<string, string> = {};
 	out[HREFLANG.en] = localeUrl(path, "en");
-	if (hindiAvailable) out[HREFLANG.hi] = localeUrl(path, "hi");
 	out["x-default"] = localeUrl(path, "en");
 	return out;
 }

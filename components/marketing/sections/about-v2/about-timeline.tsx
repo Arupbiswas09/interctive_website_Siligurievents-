@@ -34,42 +34,42 @@ const TIMELINE: readonly Milestone[] = [
     title: "Studio founded",
     body: "Started in a one-room rental on Hill Cart Road. First event was my sister's mehendi.",
     image:
-      "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=1200&q=80",
+      "/images/work/work-04.webp",
   },
   {
     year: 2016,
     title: "First destination wedding",
     body: "Three days in the Dooars. Marigold strung between bamboo and tea bushes.",
     image:
-      "https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1200&q=80",
+      "/images/services/svc-02.webp",
   },
   {
     year: 2018,
     title: "Durga Puja debut",
     body: "First public pandal design — a Bengali-Bengali jugalbandi.",
     image:
-      "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1200&q=80",
+      "/images/services/svc-04.webp",
   },
   {
     year: 2020,
     title: "Press: Vogue Wedding Co",
     body: "First feature; the team grew from 4 to 9 in the next six months.",
     image:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+      "/media/decor-pairs/haldi-01-night.avif",
   },
   {
     year: 2023,
     title: "100th event",
     body: "A bridal mandap on the edge of Mahananda Park. We knew the room before the family arrived.",
     image:
-      "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=80",
+      "/media/decor-pairs/haldi-01-day.avif",
   },
   {
     year: 2025,
     title: "250 events, 36 cities",
     body: "Still in Siliguri. Still designing dawn ceremonies in clay. Still leaving a single brass piece behind.",
     image:
-      "https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?auto=format&fit=crop&w=1200&q=80",
+      "/images/services/svc-04.webp",
   },
 ] as const;
 

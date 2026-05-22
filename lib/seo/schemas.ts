@@ -307,15 +307,13 @@ export function buildService(
 		...(service.galleryImageUrls ?? []).map((u) => absoluteUrl(u)),
 	].filter((u): u is string => typeof u === "string");
 
+	// Band-only — explicit per DECISIONS.md D-002. No numeric `price`.
+	// Google's structured-data validator rejects glyphs like "₹₹" in
+	// `price`, so we emit only `priceRange` on the Offer and Service.
+	const priceRange = service.priceBand ?? "₹₹";
 	const offers: Offer = {
 		"@type": "Offer",
 		priceCurrency: CURRENCY,
-		// Band-only — explicit per DECISIONS.md D-002. No numeric `price`.
-		priceSpecification: {
-			"@type": "PriceSpecification",
-			priceCurrency: CURRENCY,
-			price: service.priceBand ?? "₹₹",
-		},
 		availability: "https://schema.org/InStock",
 		url: absoluteUrl(`/services/${service.slug}`),
 	};
@@ -337,6 +335,9 @@ export function buildService(
 		offers,
 		image: images.length > 0 ? images : undefined,
 		url: absoluteUrl(`/services/${service.slug}`),
+		// `priceRange` accepts band glyphs (e.g. "$$", "₹₹") on Service/Offer.
+		// Cast keeps schema-dts happy without forcing a numeric price.
+		...({ priceRange } as { priceRange: string }),
 	};
 }
 
@@ -423,12 +424,9 @@ export function buildOfferCatalog(
 			name: pkg.name,
 			description: pkg.description,
 			priceCurrency: CURRENCY,
-			priceSpecification: {
-				"@type": "PriceSpecification",
-				priceCurrency: CURRENCY,
-				// Hybrid band string — never a numeric figure.
-				price: pkg.priceBand,
-			},
+			// `priceRange` carries the band glyph (₹/₹₹/₹₹₹) — `price` is
+			// reserved for numeric figures per schema.org/Google validators.
+			...({ priceRange: pkg.priceBand } as { priceRange: string }),
 			itemOffered: pkg.serviceSlug
 				? {
 						"@type": "Service",

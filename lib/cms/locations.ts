@@ -7,6 +7,8 @@
  * (pages, schema builders, sitemap) don't need to change.
  */
 
+import { pickSeedImage, SEED_LOCATIONS } from "@/lib/media/seed-images";
+
 export type LocationSlug =
   | "siliguri"
   | "bagdogra"
@@ -55,7 +57,7 @@ const LOCATIONS: ReadonlyArray<Location> = [
     country: "IN",
     latitude: 26.7271,
     longitude: 88.3953,
-    heroImageUrl: "/images/locations/siliguri-hero.jpg",
+    heroImageUrl: pickSeedImage(SEED_LOCATIONS, "siliguri"),
     tagline:
       "Our home ground — the gateway to North Bengal, Sikkim and the Dooars.",
     introCopy: [
@@ -101,7 +103,7 @@ const LOCATIONS: ReadonlyArray<Location> = [
     country: "IN",
     latitude: 26.6981,
     longitude: 88.3286,
-    heroImageUrl: "/images/locations/bagdogra-hero.jpg",
+    heroImageUrl: pickSeedImage(SEED_LOCATIONS, "bagdogra"),
     tagline:
       "Resort weddings around the airport — easy arrivals, easy logistics.",
     introCopy: [
@@ -132,7 +134,7 @@ const LOCATIONS: ReadonlyArray<Location> = [
     country: "IN",
     latitude: 27.041,
     longitude: 88.2663,
-    heroImageUrl: "/images/locations/darjeeling-hero.jpg",
+    heroImageUrl: pickSeedImage(SEED_LOCATIONS, "darjeeling"),
     tagline:
       "Mountain weddings with Kanchenjunga in the frame — intimate, cinematic, rare.",
     introCopy: [
@@ -163,7 +165,7 @@ const LOCATIONS: ReadonlyArray<Location> = [
     country: "IN",
     latitude: 27.06,
     longitude: 88.4685,
-    heroImageUrl: "/images/locations/kalimpong-hero.jpg",
+    heroImageUrl: pickSeedImage(SEED_LOCATIONS, "kalimpong"),
     tagline:
       "A quieter alternative to Darjeeling — flower country, gentle weather, lovely light.",
     introCopy: [
@@ -194,7 +196,7 @@ const LOCATIONS: ReadonlyArray<Location> = [
     country: "IN",
     latitude: 26.5435,
     longitude: 88.7188,
-    heroImageUrl: "/images/locations/jalpaiguri-hero.jpg",
+    heroImageUrl: pickSeedImage(SEED_LOCATIONS, "jalpaiguri"),
     tagline:
       "Bengali wedding country — old families, classical aesthetics, generous baraats.",
     introCopy: [
@@ -225,7 +227,7 @@ const LOCATIONS: ReadonlyArray<Location> = [
     country: "IN",
     latitude: 27.3389,
     longitude: 88.6065,
-    heroImageUrl: "/images/locations/gangtok-hero.jpg",
+    heroImageUrl: pickSeedImage(SEED_LOCATIONS, "gangtok"),
     tagline:
       "Sikkimese hospitality, monastery aesthetics — a different visual language entirely.",
     introCopy: [
@@ -256,7 +258,7 @@ const LOCATIONS: ReadonlyArray<Location> = [
     country: "IN",
     latitude: 26.7,
     longitude: 89.0,
-    heroImageUrl: "/images/locations/dooars-hero.jpg",
+    heroImageUrl: pickSeedImage(SEED_LOCATIONS, "dooars"),
     tagline:
       "Tea-garden and forest weddings — the boldest setting we work in.",
     introCopy: [

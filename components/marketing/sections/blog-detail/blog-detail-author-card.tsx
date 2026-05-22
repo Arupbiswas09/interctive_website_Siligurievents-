@@ -10,7 +10,7 @@ type BlogDetailAuthorCardProps = {
 };
 
 const FALLBACK_AVATAR =
-	"https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80";
+	"/images/services/svc-07.webp";
 
 /**
  * BlogDetailAuthorCard — author bio block at the end of the article.

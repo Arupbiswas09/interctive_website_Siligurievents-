@@ -33,6 +33,7 @@ import {
   normalisePhone,
 } from "@/lib/validators/inquiry";
 import { InquirySuccess } from "@/components/marketing/inquiry-success";
+import { getWhatsAppHref } from "@/lib/cms/site-settings";
 
 type Props = {
   /** Optional sourcePage (e.g. "pricing:weddings-signature"). */
@@ -192,14 +193,12 @@ export function InquiryForm({
   );
 
   if (submitState === "success") {
-    const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "+91XXXXXXXXXX";
-    const sanitized = phone.replace(/[^\d]/g, "");
     const v = getValues();
     const msg =
       `Hi Siligurievent — I just submitted an inquiry. ` +
       `Event: ${EVENT_TYPE_LABELS[v.eventType] ?? v.eventType}, ` +
       `~${v.guestCount} guests, budget ${v.budgetBand}.`;
-    const whatsappHref = `https://wa.me/${sanitized}?text=${encodeURIComponent(msg)}`;
+    const whatsappHref = getWhatsAppHref(msg);
 
     return (
       <InquirySuccess

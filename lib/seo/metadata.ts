@@ -72,28 +72,31 @@ function normalisePath(path: string): string {
 }
 
 /**
- * Compose a locale-prefixed absolute URL.
- *   localeUrl('/services/wedding', 'en') => https://siligurievent.com/en/services/wedding
- *   localeUrl('/', 'hi')                 => https://siligurievent.com/hi
+ * Compose an absolute URL for a route.
+ *
+ * Currently we ship a single English locale at the URL root (no `/en` or
+ * `/hi` segment). The `locale` argument is preserved on the signature so we
+ * can re-introduce locale routing later without churning every page.
+ *   localeUrl('/services/wedding', 'en') => https://siligurievent.com/services/wedding
+ *   localeUrl('/', 'en')                 => https://siligurievent.com/
  */
-export function localeUrl(path: string, locale: Locale): string {
+export function localeUrl(path: string, _locale: Locale): string {
 	const p = normalisePath(path);
-	if (p === "/") return `${SITE_URL}/${locale}`;
-	return `${SITE_URL}/${locale}${p}`;
+	if (p === "/") return `${SITE_URL}/`;
+	return `${SITE_URL}${p}`;
 }
 
 /**
  * Produces `alternates.languages` for every supported locale.
- * Adds the SEO-recommended `x-default` mapping to English.
+ * Until `/hi` routes ship, we only emit the active locale + x-default so
+ * Google doesn't see hreflang pointing at 404 pages.
  */
 export function buildAlternates(
 	path: string,
-	locales: ReadonlyArray<Locale> = ["en", "hi"],
+	_locales: ReadonlyArray<Locale> = ["en"],
 ): NonNullable<Metadata["alternates"]>["languages"] {
 	const languages: Record<string, string> = {};
-	for (const l of locales) {
-		languages[LOCALE_TO_HREFLANG[l]] = localeUrl(path, l);
-	}
+	languages[LOCALE_TO_HREFLANG.en] = localeUrl(path, "en");
 	languages["x-default"] = localeUrl(path, "en");
 	return languages;
 }

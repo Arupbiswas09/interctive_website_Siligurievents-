@@ -30,7 +30,7 @@ interface CaseStudyHeroProps {
 }
 
 const FALLBACK_HERO =
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2400&q=80";
+  "/media/decor-pairs/mandap-01-night.avif";
 
 export function CaseStudyHero({ project }: CaseStudyHeroProps): ReactElement {
   const rootRef = useRef<HTMLElement | null>(null);

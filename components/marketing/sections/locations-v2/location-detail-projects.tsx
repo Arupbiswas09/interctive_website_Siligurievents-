@@ -21,12 +21,12 @@ import type { Project } from "@/lib/cms/projects";
 
 /** Decor-focused fallback imagery. Pulled from the curated Unsplash pool. */
 const FALLBACK_IMAGES: ReadonlyArray<string> = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1590075865003-e48277fda558?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=1600&q=80",
+  "/images/hero-02.webp",
+  "/images/marketing/hero-home-alt.jpg",
+  "/images/hero-02.webp",
+  "/images/marketing/work-05.jpg",
+  "/images/hero-02.webp",
+  "/images/locations/kalimpong-hero.jpg",
 ];
 
 type LocationDetailProjectsProps = {

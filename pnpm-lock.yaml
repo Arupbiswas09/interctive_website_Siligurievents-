@@ -8,24 +8,15 @@ importers:
 
   .:
     dependencies:
-      '@ai-sdk/google':
-        specifier: ^3.0.74
-        version: 3.0.74(zod@3.25.76)
-      '@fal-ai/client':
-        specifier: ^1.10.1
-        version: 1.10.1
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.75.0(react@19.2.6))
       '@vercel/analytics':
         specifier: ^1.4.1
-        version: 1.6.1(next@16.2.6(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)
+        version: 1.6.1(next@16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)
       '@vercel/speed-insights':
         specifier: ^1.1.0
-        version: 1.3.1(next@16.2.6(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)
-      ai:
-        specifier: ^6.0.183
-        version: 6.0.183(zod@3.25.76)
+        version: 1.3.1(next@16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -46,7 +37,7 @@ importers:
         version: 0.469.0(react@19.2.6)
       next:
         specifier: ^16.0.0
-        version: 16.2.6(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       ogl:
         specifier: ^1.0.11
         version: 1.0.11
@@ -72,6 +63,9 @@ importers:
       '@biomejs/biome':
         specifier: ^1.9.4
         version: 1.9.4
+      '@fal-ai/client':
+        specifier: ^1.10.1
+        version: 1.10.1
       '@tailwindcss/postcss':
         specifier: ^4.0.0
         version: 4.3.0
@@ -92,28 +86,6 @@ importers:
         version: 5.9.3
 
 packages:
-
-  '@ai-sdk/gateway@3.0.115':
-    resolution: {integrity: sha512-xonmGfN9pt54WdKqMzWe68BRYS3rsYvraBzioyA0gfNcecHs8Ir5qk/X8grJSyZ95hghjWiOphrK6bAc11E6SA==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      zod: ^3.25.76 || ^4.1.8
-
-  '@ai-sdk/google@3.0.74':
-    resolution: {integrity: sha512-LMuDNHYNt4bfDMTE2oxe83ClF0HenCepkBs5Wb0LKBokuN1dxIUirPQHQvi1AuT+80SLyrOZ5c4wPGTVUl2A4w==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      zod: ^3.25.76 || ^4.1.8
-
-  '@ai-sdk/provider-utils@4.0.27':
-    resolution: {integrity: sha512-ubkAJ+xODouwtmN1tYlvTPphH1hPOBfZaEQe8U7skGvFAnIRs9PPpsq57bC2+Ky/MB4yzhd6YOsxTAx9sGpazw==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      zod: ^3.25.76 || ^4.1.8
-
-  '@ai-sdk/provider@3.0.10':
-    resolution: {integrity: sha512-Q3BZ27qfpYqnCYGvE3vt+Qi6LGOF9R5Nmzn+9JoM1lCRsD9mYaIhfJLkSunN48nfGXJ6n+XNV0J/XVpqGQl7Dw==}
-    engines: {node: '>=18'}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -416,13 +388,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@opentelemetry/api@1.9.1':
-    resolution: {integrity: sha512-gLyJlPHPZYdAk1JENA9LeHejZe1Ti77/pTeFm/nMXmQH/HFZlcS/O2XJB+L8fkbrNSqhdtlvjBVjxwUYanNH5Q==}
-    engines: {node: '>=8.0.0'}
-
-  '@standard-schema/spec@1.1.0':
-    resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
-
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
@@ -555,10 +520,6 @@ packages:
       vue-router:
         optional: true
 
-  '@vercel/oidc@3.2.0':
-    resolution: {integrity: sha512-UycprH3T6n3jH0k44NHMa7pnFHGu/N05MjojYr+Mc6I7obkoLIJujSWwin1pCvdy/eOxrI/l3uDLQsmcrOb4ug==}
-    engines: {node: '>= 20'}
-
   '@vercel/speed-insights@1.3.1':
     resolution: {integrity: sha512-PbEr7FrMkUrGYvlcLHGkXdCkxnylCWePx7lPxxq36DNdfo9mcUjLOmqOyPDHAOgnfqgGGdmE3XI9L/4+5fr+vQ==}
     peerDependencies:
@@ -581,12 +542,6 @@ packages:
         optional: true
       vue-router:
         optional: true
-
-  ai@6.0.183:
-    resolution: {integrity: sha512-7pJ03j/XFbkdW6wadPWNCvNpFoxPwShEkzuACEvKBNeL+P5EbHrffh12Qzn1gdEO8Wunk1kkM37XX12bGQokUg==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      zod: ^3.25.76 || ^4.1.8
 
   baseline-browser-mapping@2.10.29:
     resolution: {integrity: sha512-Asa2krT+XTPZINCS+2QcyS8WTkObE77RwkydwF7h6DmnKqbvlalz93m/dnphUyCa6SWSP51VgtEUf2FN+gelFQ==}
@@ -621,10 +576,6 @@ packages:
     resolution: {integrity: sha512-v0eOBUbiaFojBu2s2NPBfYUoRR9GjcDNvCXVaqEf5vVfpIAh9f8RCo4vXTP8c63QRKCFwoLpMpTdPwwhEKVgzA==}
     engines: {node: '>=14.18'}
 
-  eventsource-parser@3.0.8:
-    resolution: {integrity: sha512-70QWGkr4snxr0OXLRWsFLeRBIRPuQOvt4s8QYjmUlmlkyTZkRqS7EDVRZtzU3TiyDbXSzaOeF0XUKy8PchzukQ==}
-    engines: {node: '>=18.0.0'}
-
   framer-motion@11.18.2:
     resolution: {integrity: sha512-5F5Och7wrvtLVElIpclDT0CBzMVg3dL22B64aZwHtsIY8RB4mXICLrkajK4G9R+ieSAGcgrLeae2SeUTg2pr6w==}
     peerDependencies:
@@ -648,9 +599,6 @@ packages:
   jiti@2.7.0:
     resolution: {integrity: sha512-AC/7JofJvZGrrneWNaEnJeOLUx+JlGt7tNa0wZiRPT4MY1wmfKjt2+6O2p2uz2+skll8OZZmJMNqeke7kKbNgQ==}
     hasBin: true
-
-  json-schema@0.4.0:
-    resolution: {integrity: sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==}
 
   lenis@1.3.23:
     resolution: {integrity: sha512-YxYq3TJqj9sJNv0V9SkyQHejt14xwyIwgDaaMK89Uf9SxQfIszu+gTQSSphh6BWlLTNVKvvXAGkg+Zf+oFIevg==}
@@ -870,30 +818,6 @@ packages:
 
 snapshots:
 
-  '@ai-sdk/gateway@3.0.115(zod@3.25.76)':
-    dependencies:
-      '@ai-sdk/provider': 3.0.10
-      '@ai-sdk/provider-utils': 4.0.27(zod@3.25.76)
-      '@vercel/oidc': 3.2.0
-      zod: 3.25.76
-
-  '@ai-sdk/google@3.0.74(zod@3.25.76)':
-    dependencies:
-      '@ai-sdk/provider': 3.0.10
-      '@ai-sdk/provider-utils': 4.0.27(zod@3.25.76)
-      zod: 3.25.76
-
-  '@ai-sdk/provider-utils@4.0.27(zod@3.25.76)':
-    dependencies:
-      '@ai-sdk/provider': 3.0.10
-      '@standard-schema/spec': 1.1.0
-      eventsource-parser: 3.0.8
-      zod: 3.25.76
-
-  '@ai-sdk/provider@3.0.10':
-    dependencies:
-      json-schema: 0.4.0
-
   '@alloc/quick-lru@5.2.0': {}
 
   '@biomejs/biome@1.9.4':
@@ -1090,10 +1014,6 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.2.6':
     optional: true
 
-  '@opentelemetry/api@1.9.1': {}
-
-  '@standard-schema/spec@1.1.0': {}
-
   '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.1
@@ -1179,25 +1099,15 @@ snapshots:
     dependencies:
       csstype: 3.2.3
 
-  '@vercel/analytics@1.6.1(next@16.2.6(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)':
+  '@vercel/analytics@1.6.1(next@16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)':
     optionalDependencies:
-      next: 16.2.6(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      next: 16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react: 19.2.6
 
-  '@vercel/oidc@3.2.0': {}
-
-  '@vercel/speed-insights@1.3.1(next@16.2.6(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)':
+  '@vercel/speed-insights@1.3.1(next@16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)':
     optionalDependencies:
-      next: 16.2.6(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      next: 16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react: 19.2.6
-
-  ai@6.0.183(zod@3.25.76):
-    dependencies:
-      '@ai-sdk/gateway': 3.0.115(zod@3.25.76)
-      '@ai-sdk/provider': 3.0.10
-      '@ai-sdk/provider-utils': 4.0.27(zod@3.25.76)
-      '@opentelemetry/api': 1.9.1
-      zod: 3.25.76
 
   baseline-browser-mapping@2.10.29: {}
 
@@ -1222,8 +1132,6 @@ snapshots:
 
   eventsource-parser@1.1.2: {}
 
-  eventsource-parser@3.0.8: {}
-
   framer-motion@11.18.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       motion-dom: 11.18.1
@@ -1238,8 +1146,6 @@ snapshots:
   gsap@3.15.0: {}
 
   jiti@2.7.0: {}
-
-  json-schema@0.4.0: {}
 
   lenis@1.3.23(react@19.2.6):
     optionalDependencies:
@@ -1310,7 +1216,7 @@ snapshots:
 
   nanoid@3.3.12: {}
 
-  next@16.2.6(@opentelemetry/api@1.9.1)(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+  next@16.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       '@next/env': 16.2.6
       '@swc/helpers': 0.5.15
@@ -1329,7 +1235,6 @@ snapshots:
       '@next/swc-linux-x64-musl': 16.2.6
       '@next/swc-win32-arm64-msvc': 16.2.6
       '@next/swc-win32-x64-msvc': 16.2.6
-      '@opentelemetry/api': 1.9.1
       sharp: 0.34.5
     transitivePeerDependencies:
       - '@babel/core'

@@ -4,6 +4,7 @@
  * Replace with Payload `team` collection in Sprint 2.
  * Founder is the named `Person` in About-page JSON-LD (per docs/07-SEO §7.6).
  */
+import { pickSeedImage, SEED_TEAM } from "@/lib/media/seed-images";
 
 export interface TeamMember {
   slug: string;
@@ -28,7 +29,7 @@ const TEAM: ReadonlyArray<TeamMember> = [
     bio: "Designs every event personally. Twelve years on weddings across Bengal, Sikkim and the Dooars.",
     longBio:
       "TODO: founder long-form bio from CMS — keep to 60–90 words, anchored on training, philosophy, signature projects.",
-    imageUrl: "/images/team/founder.jpg",
+    imageUrl: pickSeedImage(SEED_TEAM, "founder"),
     sameAs: [
       "https://instagram.com/siligurievent",
       "https://www.youtube.com/@siligurievent",
@@ -40,28 +41,28 @@ const TEAM: ReadonlyArray<TeamMember> = [
     name: "TODO: Design Lead",
     role: "Design Lead",
     bio: "Translates client briefs into mood boards, palettes and the full visual treatment.",
-    imageUrl: "/images/team/design-lead.jpg",
+    imageUrl: pickSeedImage(SEED_TEAM, "design-lead"),
   },
   {
     slug: "florist",
     name: "TODO: Head Florist",
     role: "Head Florist",
     bio: "Sources flowers from local farms and runs the cold-room. Specialises in marigold and jasmine work.",
-    imageUrl: "/images/team/head-florist.jpg",
+    imageUrl: pickSeedImage(SEED_TEAM, "florist"),
   },
   {
     slug: "production",
     name: "TODO: Production Manager",
     role: "Production Manager",
     bio: "Runs site builds, lighting rigs and the crew. Keeps every event on schedule.",
-    imageUrl: "/images/team/production-manager.jpg",
+    imageUrl: pickSeedImage(SEED_TEAM, "production"),
   },
   {
     slug: "client-care",
     name: "TODO: Client Care Lead",
     role: "Client Care",
     bio: "Your first reply on WhatsApp and your guide through every meeting until handover.",
-    imageUrl: "/images/team/client-care.jpg",
+    imageUrl: pickSeedImage(SEED_TEAM, "client-care"),
   },
 ];
 

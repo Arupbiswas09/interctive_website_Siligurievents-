@@ -21,6 +21,7 @@ import { HomeJournalTeaser } from "@/components/marketing/sections/home-journal-
 import { HomeCtaCloser } from "@/components/marketing/sections/home-cta-closer";
 import { TrustedPartners } from "@/components/marketing/sections/trusted-partners";
 import { getPartners } from "@/lib/cms/partners";
+import { getSiteSettings } from "@/lib/cms/site-settings";
 import { SectionDivider } from "@/components/ui/section-divider";
 
 /**
@@ -35,20 +36,24 @@ import { SectionDivider } from "@/components/ui/section-divider";
  * shared `app/(site)/layout.tsx`. Do not re-wrap here.
  */
 
-// TODO(sprint-2): replace with `getSiteSettings()` from a CMS helper.
-const SITE_SETTINGS: SiteSettingsInput = {
-  businessName: "Siligurievent",
-  tagline:
-    "Cinematic decor for celebrations across Siliguri, Darjeeling, and the Dooars.",
-  city: "Siliguri",
-  state: "WB",
-  country: "IN",
-  pincode: "734001",
-  email: "hello@siligurievent.com",
-  // Phone / WhatsApp numbers are intentionally omitted until owner confirms.
-  founderName: "TODO: Owner Name",
-  foundedYear: 2024,
-};
+function buildSiteSettings(): SiteSettingsInput {
+  const s = getSiteSettings();
+  return {
+    businessName: "Siligurievent",
+    tagline:
+      "Cinematic decor for celebrations across Siliguri, Darjeeling, and the Dooars.",
+    phone: s.phoneDisplay,
+    whatsappNumber: s.whatsappNumber,
+    email: s.email,
+    addressLine1: s.addressLine,
+    city: s.addressCity,
+    state: s.addressRegion,
+    country: s.addressCountry,
+    pincode: s.addressPostalCode,
+    founderName: s.founderName,
+    foundedYear: 2024,
+  };
+}
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
@@ -71,8 +76,9 @@ export function generateMetadata(): Metadata {
 export default function HomePage(): React.ReactElement {
   // Organization + LocalBusiness JSON-LD identify the brand & GMB equivalent.
   // WebSite JSON-LD declares the site name + SearchAction (sitelinks search box).
-  const organizationLd = buildOrganization(SITE_SETTINGS);
-  const localBusinessLd = buildLocalBusiness(SITE_SETTINGS);
+  const settings = buildSiteSettings();
+  const organizationLd = buildOrganization(settings);
+  const localBusinessLd = buildLocalBusiness(settings);
   const websiteLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",

@@ -42,16 +42,16 @@ const CATEGORY_LABEL: Record<ServiceCategory, string> = {
 
 // Fallback decoration photos for services without a heroImageUrl.
 const FALLBACK_IMAGES: ReadonlyArray<string> = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1590075865003-e48277fda558?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1530023367847-a683933f4172?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1600&q=80",
+  "/media/decor-pairs/bday-01-day.avif",
+  "/images/services/svc-01.webp",
+  "/media/decor-pairs/bday-01-night.avif",
+  "/images/marketing/service-06.jpg",
+  "/media/decor-pairs/bday-01-day.avif",
+  "/images/services/svc-06.webp",
+  "/media/decor-pairs/bday-01-day.avif",
+  "/images/services/svc-01.webp",
+  "/images/services/svc-07.webp",
+  "/images/marketing/service-06.jpg",
 ];
 
 /** Asymmetric tile sizing — repeats across the visible service list. */

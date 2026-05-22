@@ -43,19 +43,19 @@ const SCRIPT_LABEL: Record<string, string> = {
 /** Stable Unsplash photograph per city — same set as the hub map. */
 const CITY_IMAGE: Record<string, string> = {
   siliguri:
-    "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80",
+    "/images/hero-02.webp",
   bagdogra:
-    "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80",
+    "/images/marketing/work-05.jpg",
   darjeeling:
-    "https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?auto=format&fit=crop&w=1600&q=80",
+    "/images/marketing/work-05.jpg",
   kalimpong:
-    "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=1600&q=80",
+    "/images/hero-01.webp",
   jalpaiguri:
-    "https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1600&q=80",
+    "/images/hero-02.webp",
   gangtok:
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=80",
+    "/images/locations/kalimpong-hero.jpg",
   dooars:
-    "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1600&q=80",
+    "/images/locations/kalimpong-hero.jpg",
 };
 
 type LocationDetailHeroProps = {

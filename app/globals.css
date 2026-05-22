@@ -21,7 +21,8 @@
   --color-bg-soft: #f4ece1;
   --color-ink: #3a1a24;
   --color-ink-muted: #6b4a52;
-  --color-ink-soft: #9a8088;
+  /* Darkened from #9a8088 → #6e555c so body text on bg #fbf6ef meets WCAG AA. */
+  --color-ink-soft: #6e555c;
   --color-accent: #a4365c;            /* rose primary */
   --color-accent-deep: #7d2546;       /* rose deep (hover) */
   --color-rose-soft: #f5d8d8;

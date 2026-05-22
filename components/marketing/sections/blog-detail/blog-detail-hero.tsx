@@ -19,7 +19,7 @@ type BlogDetailHeroProps = {
 };
 
 const FALLBACK_COVER =
-	"https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=80";
+	"/images/marketing/work-01.jpg";
 
 /**
  * BlogDetailHero — editorial cover image with parallax + sticky meta strip.

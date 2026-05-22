@@ -21,6 +21,7 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { CeremonyOrnament } from "@/components/illustrations/ceremony-ornaments";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { useReducedMotion } from "@/lib/motion/use-reduced-motion";
+import { getWhatsAppHref } from "@/lib/cms/site-settings";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -37,13 +38,10 @@ const HEADLINE_WORDS: ReadonlyArray<string> = [
   "date.",
 ];
 
-const WHATSAPP_HREF =
-  "https://wa.me/91XXXXXXXXXX?text=" +
-  encodeURIComponent(
+export function GalleryCtaCloser(): ReactElement {
+  const WHATSAPP_HREF = getWhatsAppHref(
     "Hi Siligurievent — I just saw your gallery and would like to discuss an event.",
   );
-
-export function GalleryCtaCloser(): ReactElement {
   const sectionRef = useRef<HTMLElement | null>(null);
   const ornamentRef = useRef<HTMLDivElement | null>(null);
   const wordsRef = useRef<HTMLSpanElement[]>([]);

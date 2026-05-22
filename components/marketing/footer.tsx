@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Wordmark } from "@/components/brand/wordmark";
+import { getSiteSettings, getWhatsAppHref } from "@/lib/cms/site-settings";
 
-// TODO: source from CMS SiteSettings once Sprint 2 lands Payload.
 const SITEMAP_LINKS = [
   { label: "Work", href: "/portfolio" },
   { label: "Services", href: "/services" },
@@ -22,28 +22,39 @@ const LOCATIONS = [
   { label: "Gangtok", href: "/locations/gangtok" },
 ] as const;
 
-const SOCIAL_LINKS = [
-  { label: "Instagram", href: "#" }, // TODO: real handle
-  { label: "YouTube", href: "#" },
-  { label: "Pinterest", href: "#" },
-  { label: "WhatsApp", href: "#" },
-] as const;
-
 /**
  * Footer — three-column on desktop, stacked on mobile.
  * Dark theme per docs/04 §4.4.
  */
 export function Footer(): React.ReactElement {
+  const settings = getSiteSettings();
+  const whatsapp = getWhatsAppHref();
+  const socials: ReadonlyArray<{ label: string; href: string }> = [
+    {
+      label: "Instagram",
+      href: process.env.NEXT_PUBLIC_SITE_INSTAGRAM ?? "https://instagram.com/siligurievent",
+    },
+    {
+      label: "YouTube",
+      href: process.env.NEXT_PUBLIC_SITE_YOUTUBE ?? "https://youtube.com/@siligurievent",
+    },
+    {
+      label: "Pinterest",
+      href: process.env.NEXT_PUBLIC_SITE_PINTEREST ?? "https://pinterest.com/siligurievent",
+    },
+    { label: "WhatsApp", href: whatsapp },
+  ];
+
   return (
     <footer
       data-theme="dark"
-      className="bg-[#0E0B08] text-[#F5EDE0]"
+      className="bg-[color:var(--color-ink-deep,#0E0B08)] text-[color:var(--color-cream-jasmine,#F5EDE0)]"
       aria-label="Site footer"
     >
       <div
         aria-hidden="true"
         className="h-px w-full"
-        style={{ backgroundColor: "var(--color-gold, #B8893A)" }}
+        style={{ backgroundColor: "var(--color-gold)" }}
       />
       <Container>
         <div className="grid grid-cols-1 gap-[var(--space-12)] py-[var(--space-24)] md:grid-cols-3">
@@ -61,33 +72,35 @@ export function Footer(): React.ReactElement {
                 ariaLabel="Siligurievent — home"
               />
             </Link>
-            <p className="max-w-prose text-[length:var(--text-base)] leading-relaxed text-[#B8A992]">
-              {/* TODO: tagline from CMS */}
+            <p className="max-w-prose text-[length:var(--text-base)] leading-relaxed text-[color:var(--color-ink-muted,#B8A992)]">
               Cinematic event decoration across Siliguri & North Bengal.
               Designed to be remembered in stills.
             </p>
-            <ul className="mt-[var(--space-4)] flex flex-col gap-[var(--space-2)] text-[length:var(--text-sm)] text-[#B8A992]">
+            <ul className="mt-[var(--space-4)] flex flex-col gap-[var(--space-2)] text-[length:var(--text-sm)] text-[color:var(--color-ink-muted,#B8A992)]">
               <li>
                 <a
-                  href="mailto:hello@siligurievent.com"
-                  className="hover:text-[#F5EDE0]"
+                  href={`mailto:${settings.email}`}
+                  className="hover:text-[color:var(--color-cream-jasmine,#F5EDE0)]"
                 >
-                  hello@siligurievent.com {/* TODO: real email */}
-                </a>
-              </li>
-              <li>
-                <a href="tel:+91XXXXXXXXXX" className="hover:text-[#F5EDE0]">
-                  +91 XXXXX XXXXX {/* TODO: real phone */}
+                  {settings.email}
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/91XXXXXXXXXX"
+                  href={`tel:${settings.phoneTel}`}
+                  className="hover:text-[color:var(--color-cream-jasmine,#F5EDE0)]"
+                >
+                  {settings.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-[#F5EDE0]"
+                  className="hover:text-[color:var(--color-cream-jasmine,#F5EDE0)]"
                 >
-                  WhatsApp {/* TODO: real number */}
+                  WhatsApp
                 </a>
               </li>
             </ul>
@@ -101,7 +114,7 @@ export function Footer(): React.ReactElement {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[length:var(--text-base)] text-[#B8A992] hover:text-[#F5EDE0]"
+                    className="text-[length:var(--text-base)] text-[color:var(--color-ink-muted,#B8A992)] hover:text-[color:var(--color-cream-jasmine,#F5EDE0)]"
                   >
                     {link.label}
                   </Link>
@@ -119,7 +132,7 @@ export function Footer(): React.ReactElement {
                   <li key={loc.href}>
                     <Link
                       href={loc.href}
-                      className="text-[length:var(--text-base)] text-[#B8A992] hover:text-[#F5EDE0]"
+                      className="text-[length:var(--text-base)] text-[color:var(--color-ink-muted,#B8A992)] hover:text-[color:var(--color-cream-jasmine,#F5EDE0)]"
                     >
                       {loc.label}
                     </Link>
@@ -130,13 +143,13 @@ export function Footer(): React.ReactElement {
             <div className="flex flex-col gap-[var(--space-4)]">
               <Eyebrow tone="gold">Follow</Eyebrow>
               <ul className="flex flex-wrap gap-x-[var(--space-6)] gap-y-[var(--space-2)]">
-                {SOCIAL_LINKS.map((social) => (
+                {socials.map((social) => (
                   <li key={social.label}>
                     <a
                       href={social.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[length:var(--text-base)] text-[#B8A992] hover:text-[#F5EDE0]"
+                      className="text-[length:var(--text-base)] text-[color:var(--color-ink-muted,#B8A992)] hover:text-[color:var(--color-cream-jasmine,#F5EDE0)]"
                     >
                       {social.label}
                     </a>
@@ -147,20 +160,22 @@ export function Footer(): React.ReactElement {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[var(--space-2)] border-t border-[#F5EDE014] py-[var(--space-6)] text-[length:var(--text-xs)] text-[#7A6E5E] md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-[var(--space-2)] border-t border-[#F5EDE014] py-[var(--space-6)] text-[length:var(--text-xs)] text-[color:var(--color-ink-faded,#7A6E5E)] md:flex-row md:items-center md:justify-between">
           <p>
             © 2026 Siligurievent · Designed for
             celebrations across North Bengal.
           </p>
           <div className="flex flex-wrap items-center gap-[var(--space-4)]">
-            <Link href="/privacy" className="hover:text-[#F5EDE0]">
+            <Link href="/privacy" className="hover:text-[color:var(--color-cream-jasmine,#F5EDE0)]">
               Privacy
             </Link>
-            <Link href="/terms" className="hover:text-[#F5EDE0]">
+            <Link href="/terms" className="hover:text-[color:var(--color-cream-jasmine,#F5EDE0)]">
               Terms
             </Link>
             <span aria-hidden="true">·</span>
-            <span>Sevoke Road, Siliguri, WB {/* TODO: real address */}</span>
+            <span>
+              {settings.addressLine}, {settings.addressCity}, {settings.addressRegion}
+            </span>
           </div>
         </div>
       </Container>

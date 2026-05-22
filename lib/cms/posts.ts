@@ -9,6 +9,7 @@
  * (`getAllPosts`, `getPostBySlug`, `getPostsByCategory`, `getRelatedPosts`,
  * `getAllCategories`, `getFeaturedPost`, `POST_CATEGORIES`) must remain stable.
  */
+import { pickSeedImage, SEED_BLOG, SEED_TEAM } from "@/lib/media/seed-images";
 import type { Locale } from "@/lib/seo/metadata";
 
 export type PostCategorySlug =
@@ -93,6 +94,7 @@ const DEFAULT_AUTHOR: PostAuthor = {
 	name: "TODO: Owner name",
 	role: "Founder & Lead Decorator",
 	bio: "TODO: Author bio — short, two-line introduction with experience and signature.",
+	avatarUrl: pickSeedImage(SEED_TEAM, "founder"),
 };
 
 // ---------------------------------------------------------------------------
@@ -105,7 +107,7 @@ const POSTS: ReadonlyArray<BlogPost> = [
 		title: "How to plan a Bengali wedding in 6 months",
 		excerpt:
 			"TODO: A practical month-by-month timeline for Bengali weddings — from Aashirbaad to Bou Bhaat — with vendor checkpoints and rehearsal logistics.",
-		coverImageUrl: undefined,
+		coverImageUrl: pickSeedImage(SEED_BLOG, "how-to-plan-a-bengali-wedding-in-6-months"),
 		coverImageAlt:
 			"TODO: Cover alt — Bengali wedding mandap with marigold and tuberose florals at golden hour.",
 		category: "bengali-weddings",
@@ -129,6 +131,7 @@ const POSTS: ReadonlyArray<BlogPost> = [
 		title: "Mandap design ideas that stay cinematic",
 		excerpt:
 			"TODO: A short visual essay on mandap silhouettes, drape ratios, and lighting cues that read beautifully on camera and in person.",
+		coverImageUrl: pickSeedImage(SEED_BLOG, "mandap-design-ideas-that-stay-cinematic"),
 		coverImageAlt:
 			"TODO: Cover alt — sculptural mandap with ivory drape and brass detailing.",
 		category: "trends",
@@ -151,6 +154,7 @@ const POSTS: ReadonlyArray<BlogPost> = [
 		title: "Best wedding venues in Siliguri (with photos)",
 		excerpt:
 			"TODO: A curated guide to Siliguri venues by guest count, with notes on logistics, light, and the kind of weddings each one suits.",
+		coverImageUrl: pickSeedImage(SEED_BLOG, "best-wedding-venues-in-siliguri-with-photos"),
 		coverImageAlt:
 			"TODO: Cover alt — a Siliguri banquet hall styled for a 300-guest reception.",
 		category: "locations",
@@ -173,6 +177,7 @@ const POSTS: ReadonlyArray<BlogPost> = [
 		title: "Tea garden weddings in Darjeeling: what to know",
 		excerpt:
 			"TODO: Altitude, weather windows, permits, and decor that holds up against the Kanchenjunga backdrop — everything you need before booking a hill venue.",
+		coverImageUrl: pickSeedImage(SEED_BLOG, "tea-garden-weddings-in-darjeeling-what-to-know"),
 		coverImageAlt:
 			"TODO: Cover alt — an outdoor mandap on a Darjeeling tea estate at first light.",
 		category: "locations",
@@ -195,6 +200,7 @@ const POSTS: ReadonlyArray<BlogPost> = [
 		title: "Indian wedding decoration cost breakdown 2026",
 		excerpt:
 			"TODO: How the rupees actually fall — florals, lighting, mandap, drape, manpower — and where adding budget visibly changes the day.",
+		coverImageUrl: pickSeedImage(SEED_BLOG, "indian-wedding-decoration-cost-breakdown-2026"),
 		coverImageAlt:
 			"TODO: Cover alt — table-top decor showing tuberose, candles, and brass-rim cutlery.",
 		category: "planning",
@@ -217,6 +223,7 @@ const POSTS: ReadonlyArray<BlogPost> = [
 		title: "Floral choices for North Bengal weddings",
 		excerpt:
 			"TODO: Seasonal flower availability across Siliguri, Bagdogra, and Dooars — and the combinations we keep returning to for the camera.",
+		coverImageUrl: pickSeedImage(SEED_BLOG, "floral-choices-for-north-bengal-weddings"),
 		coverImageAlt:
 			"TODO: Cover alt — close-up of jasmine, tuberose, and dahlia in a styled vignette.",
 		category: "behind-the-scenes",
@@ -239,6 +246,7 @@ const POSTS: ReadonlyArray<BlogPost> = [
 		title: "Destination wedding logistics from Siliguri",
 		excerpt:
 			"TODO: Routing trucks up the hills, lighting backups, vendor billeting — a planner's guide to keeping a destination wedding calm.",
+		coverImageUrl: pickSeedImage(SEED_BLOG, "destination-wedding-logistics-from-siliguri"),
 		coverImageAlt:
 			"TODO: Cover alt — crew setting up a stage at dusk with the Himalayas behind.",
 		category: "behind-the-scenes",

@@ -3,6 +3,8 @@
  * IDs align with docs/09-IMAGE-PROMPTS.md; swap files in place when Gemini renders land.
  */
 
+import { pickSeedImage, SEED_STAGE } from "@/lib/media/seed-images";
+
 export const SITE_IMAGES = {
   hero: {
     // Home hero is owned by the dedicated rose-gold hero component.
@@ -24,12 +26,12 @@ export const SITE_IMAGES = {
     "04": "/images/marketing/work-02.jpg",
     "05": "/images/marketing/work-05.jpg",
     "06": "/images/marketing/service-06.jpg",
-    "07": "/images/marketing/service-07.jpg",
+    "07": pickSeedImage(SEED_STAGE, "service-07"),
   },
   brand: {
     emblem: "/images/logo-emblem-a.webp",
   },
-} as const;
+};
 
 export type WorkImageKey = keyof typeof SITE_IMAGES.work;
 

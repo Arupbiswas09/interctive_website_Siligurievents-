@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -98,10 +99,14 @@ export function Header(): React.ReactElement {
             aria-label="Siliguri Event — home"
             className="inline-flex items-center gap-3"
           >
-            <img
+            <Image
               src="/images/logo-emblem-a.webp"
               alt=""
               aria-hidden="true"
+              width={88}
+              height={88}
+              priority
+              sizes="(min-width: 768px) 44px, 32px"
               className="h-8 w-auto object-contain md:h-11"
             />
             <span className="flex flex-col leading-none">

@@ -25,7 +25,7 @@ const FOUNDER = {
   quote:
     "I started Siliguri Event because the first wedding I designed — for my own sister — felt like a film I wanted to keep watching. Every event since has been an attempt to make the next one feel that way.",
   portrait:
-    "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=1200&q=80",
+    "/images/marketing/hero-home-alt.jpg",
 } as const;
 
 export function AboutHeroEditorial(): React.ReactElement {

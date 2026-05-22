@@ -26,7 +26,7 @@ import type { OrnamentName } from "@/components/illustrations/ceremony-ornaments
 
 /** Build an Unsplash CDN URL with sizing parameters for next/image. */
 function unsplash(id: string, w: number = 1600): string {
-  return `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+  return `/images/marketing/work-04.jpg`;
 }
 
 // Curated decoration-focused photos. IDs verified from public Unsplash

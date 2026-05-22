@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { getWhatsAppHref } from "@/lib/cms/site-settings";
 
 const PEEK_STORAGE_KEY = "sgv:wa-peek-shown";
 const PEEK_SCROLL_RATIO = 0.6; // 60vh
@@ -24,12 +25,9 @@ const PEEK_DURATION_MS = 3000;
  * placeholder so previews don't break before Sprint 4. Link logic unchanged.
  */
 export function StickyWhatsApp(): React.ReactElement {
-  const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "+91XXXXXXXXXX";
-  const sanitized = phone.replace(/[^\d]/g, "");
-  // TODO: pre-fill message per page context in Sprint 4.
-  const href = `https://wa.me/${sanitized}?text=${encodeURIComponent(
+  const href = getWhatsAppHref(
     "Hello Siligurievent, I'd like to plan an event.",
-  )}`;
+  );
 
   const [expanded, setExpanded] = useState(false);
 

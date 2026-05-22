@@ -23,7 +23,7 @@ const PRIVACY_TL_DR: ReadonlyArray<string> = [
   "We never sell your data. Ever.",
   "We store your inquiry only until your event is delivered, then archive it.",
   "We use analytics that anonymise IPs.",
-  "If you'd like your data deleted, email hello@silsigurievent.com — we do it in 7 days.",
+  "If you'd like your data deleted, email hello@siligurievent.com — we do it in 7 days.",
 ];
 
 const PRIVACY_CHAPTERS: ReadonlyArray<LegalChapter> = [
@@ -57,7 +57,7 @@ const PRIVACY_CHAPTERS: ReadonlyArray<LegalChapter> = [
     id: "your-rights",
     title: "Your rights",
     body: [
-      "You can ask us what data we hold about you, correct it, or have it deleted. Email hello@silsigurievent.com and we'll respond in 7 days.",
+      "You can ask us what data we hold about you, correct it, or have it deleted. Email hello@siligurievent.com and we'll respond in 7 days.",
       "If you're in the EU or California, the equivalent regulations apply — same response time.",
     ],
   },
@@ -73,7 +73,7 @@ const PRIVACY_CHAPTERS: ReadonlyArray<LegalChapter> = [
     id: "contact",
     title: "Contact us",
     body: [
-      "Privacy questions: hello@silsigurievent.com",
+      "Privacy questions: hello@siligurievent.com",
       "Postal: Siliguri Event Studio, Hill Cart Road, Siliguri, West Bengal 734001",
     ],
   },

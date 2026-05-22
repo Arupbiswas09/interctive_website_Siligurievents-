@@ -14,8 +14,16 @@
  * — they read from the same source-of-truth catalogue.
  */
 
+import { cacheLife, cacheTag } from "next/cache";
 import type { LocationSlug } from "./locations";
 import type { PriceBand } from "@/lib/seo/schemas";
+import {
+  pickSeedImage,
+  poolForCategory,
+  SEED_HERO,
+  SEED_DETAIL,
+  SEED_STAGE,
+} from "@/lib/media/seed-images";
 
 // ---------------------------------------------------------------------------
 // Rich types — used by the new portfolio routes
@@ -168,23 +176,61 @@ const RATIO_DIMS: Record<Ratio, { w: number; h: number }> = {
   "9:16": { w: 1080, h: 1920 },
 };
 
-// Whitelist of project covers we generated specific imagery for. All other
-// sub-images (chapter shots, gallery, brief, etc.) fall back to a per-ratio
-// hero tile so the grid never shows a 404.
-const GENERATED_COVERS = new Set<string>([
-  "PROJ-rinki-aditya-COVER",
-  "PROJ-arpita-sanjay-COVER",
-  "PROJ-tea-garden-COVER",
-  "PROJ-darjeeling-COVER",
-  "PROJ-corporate-gala-COVER",
-  "PROJ-bday-milestone-COVER",
-]);
+/**
+ * Map a project-image ID prefix to its semantic category. Each project's
+ * `mockImage(...)` IDs start with a fixed `PROJ-<slug>-` prefix that uniquely
+ * identifies the event category — so we can thematically pick imagery
+ * without threading a category parameter through 100+ call sites.
+ */
+const PROJECT_ID_CATEGORY: ReadonlyArray<readonly [string, string]> = [
+  ["PROJ-rinki-aditya-", "wedding"],
+  ["PROJ-arpita-sanjay-", "wedding"],
+  ["PROJ-tea-garden-", "wedding"],
+  ["PROJ-rohit-50-", "birthday"],
+  ["PROJ-mukherjee-", "annaprashan"],
+  ["PROJ-prestige-", "corporate"],
+];
 
-function mockImage(id: string, alt: string, ratio: Ratio = "3:2"): ProjectImage {
+function categoryForId(id: string): string {
+  for (const [prefix, category] of PROJECT_ID_CATEGORY) {
+    if (id.startsWith(prefix)) return category;
+  }
+  return "wedding";
+}
+
+/**
+ * Build a `ProjectImage` from the shared seed-images catalogue.
+ *
+ * Picks a deterministic image based on `id` so the same ID always resolves to
+ * the same source (stable SSG). The pool is chosen by ID convention:
+ *  - `*-COVER` / `*-CLOSING` → `SEED_HERO`
+ *  - `*-BRIEF` / `*-DESIGN-*` → `SEED_DETAIL`
+ *  - `*-CHAPTER-3-*` (sangeet) / `*-CHAPTER-5-*` (reception) → `SEED_STAGE`
+ *  - otherwise → `poolForCategory(categoryHint ?? inferred-from-id)`
+ *
+ * `categoryHint` may be passed at the call site to override the prefix
+ * inference (e.g. for one-off projects whose IDs don't match a known prefix).
+ */
+function mockImage(
+  id: string,
+  alt: string,
+  ratio: Ratio = "3:2",
+  categoryHint?: string,
+): ProjectImage {
   const { w, h } = RATIO_DIMS[ratio];
-  const src = GENERATED_COVERS.has(id)
-    ? `/images/placeholders/${id}.jpg`
-    : `/images/placeholders/_fallback-${ratio.replace(":", "x")}.jpg`;
+
+  let pool: ReadonlyArray<string>;
+  if (/-(COVER|CLOSING)\b/.test(id)) {
+    pool = SEED_HERO;
+  } else if (/-BRIEF\b/.test(id) || /-DESIGN-/.test(id)) {
+    pool = SEED_DETAIL;
+  } else if (/-CHAPTER-3-/.test(id) || /-CHAPTER-5-/.test(id)) {
+    pool = SEED_STAGE;
+  } else {
+    pool = poolForCategory(categoryHint ?? categoryForId(id));
+  }
+
+  const src = pickSeedImage(pool, id);
   return { id, src, alt, width: w, height: h };
 }
 
@@ -766,6 +812,9 @@ const PROJECTS: ReadonlyArray<PortfolioProject> = [
 export async function listProjects(
   options: PortfolioFilterOptions = {},
 ): Promise<PortfolioPage> {
+  "use cache";
+  cacheLife("max");
+  cacheTag("projects:index");
   const { category, year, location, page = 1, pageSize = 9 } = options;
 
   const filtered = PROJECTS.filter((p) => p.status === "published")
@@ -792,6 +841,9 @@ export async function listProjects(
 export async function getProjectBySlug(
   slug: string,
 ): Promise<PortfolioProject | null> {
+  "use cache";
+  cacheLife("max");
+  cacheTag(`project:${slug}`);
   const project = PROJECTS.find(
     (p) => p.slug === slug && p.status === "published",
   );
@@ -800,11 +852,17 @@ export async function getProjectBySlug(
 
 /** Slug list for `generateStaticParams`. */
 export async function listProjectSlugs(): Promise<ReadonlyArray<string>> {
+  "use cache";
+  cacheLife("max");
+  cacheTag("projects:index");
   return PROJECTS.filter((p) => p.status === "published").map((p) => p.slug);
 }
 
 /** Facets for the filter rail — distinct categories / years / locations. */
 export async function getPortfolioFacets(): Promise<PortfolioFacets> {
+  "use cache";
+  cacheLife("max");
+  cacheTag("projects:index");
   const published = PROJECTS.filter((p) => p.status === "published");
 
   const categoryMap = new Map<string, { label: string; count: number }>();

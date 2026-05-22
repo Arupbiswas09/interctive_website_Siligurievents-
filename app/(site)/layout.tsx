@@ -47,7 +47,7 @@ function GrainOverlay() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[9999] mix-blend-multiply opacity-[0.04] will-change-transform"
+      className="pointer-events-none fixed inset-0 z-[45] mix-blend-multiply opacity-[0.04]"
     >
       <svg width="100%" height="100%" className="h-full w-full">
         <filter id="grain-filter">

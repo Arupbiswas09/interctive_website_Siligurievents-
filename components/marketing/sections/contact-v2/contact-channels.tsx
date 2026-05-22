@@ -7,6 +7,7 @@ import {
   type OrnamentName,
 } from "@/components/illustrations/ceremony-ornaments";
 import { cn } from "@/lib/utils";
+import { getSiteSettings, getWhatsAppHref } from "@/lib/cms/site-settings";
 
 type Channel = {
   label: string;
@@ -17,46 +18,46 @@ type Channel = {
   ornament: OrnamentName;
 };
 
-const CHANNELS: ReadonlyArray<Channel> = [
-  {
-    label: "WhatsApp",
-    title: "Chat now",
-    body: "Send a voice note, photo or just say hi. Fastest route.",
-    action: "Open WhatsApp →",
-    href: "https://wa.me/919800000000",
-    ornament: "jasmine",
-  },
-  {
-    label: "Phone",
-    title: "Call the studio",
-    body: "Talk to the lead designer between 11–7, Monday to Saturday.",
-    action: "+91 98XXXXXXXX",
-    href: "tel:+919800000000",
-    ornament: "marigold",
-  },
-  {
-    label: "Email",
-    title: "Write a brief",
-    body: "Good for long briefs, attachments, or sharing your inspiration deck.",
-    action: "hello@silsigurievent.com",
-    href: "mailto:hello@silsigurievent.com",
-    ornament: "chandelier",
-  },
-  {
-    label: "Studio visit",
-    title: "Come over",
-    body: "See fabrics, samples and past moodboards in person.",
-    action: "Book a slot →",
-    href: "#inquiry",
-    ornament: "mandap",
-  },
-];
-
 /**
  * ContactChannels — quick-channel grid: WhatsApp / Phone / Email / Studio visit.
  * Brass-cornered tiles with a ceremony ornament accent and a single action link.
  */
 export function ContactChannels(): React.ReactElement {
+  const settings = getSiteSettings();
+  const CHANNELS: ReadonlyArray<Channel> = [
+    {
+      label: "WhatsApp",
+      title: "Chat now",
+      body: "Send a voice note, photo or just say hi. Fastest route.",
+      action: "Open WhatsApp →",
+      href: getWhatsAppHref(),
+      ornament: "jasmine",
+    },
+    {
+      label: "Phone",
+      title: "Call the studio",
+      body: "Talk to the lead designer between 11–7, Monday to Saturday.",
+      action: settings.phoneDisplay,
+      href: `tel:${settings.phoneTel}`,
+      ornament: "marigold",
+    },
+    {
+      label: "Email",
+      title: "Write a brief",
+      body: "Good for long briefs, attachments, or sharing your inspiration deck.",
+      action: settings.email,
+      href: `mailto:${settings.email}`,
+      ornament: "chandelier",
+    },
+    {
+      label: "Studio visit",
+      title: "Come over",
+      body: "See fabrics, samples and past moodboards in person.",
+      action: "Book a slot →",
+      href: "#inquiry",
+      ornament: "mandap",
+    },
+  ];
   return (
     <Section tone="default" spacing="lg" id="channels">
       <Container>

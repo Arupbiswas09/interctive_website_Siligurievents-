@@ -1,6 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/motion/magnetic-button";
+import { getWhatsAppHref } from "@/lib/cms/site-settings";
 
 type Props = {
   /** Optional pre-fill message — falls back to a default opener. */
@@ -20,12 +21,10 @@ export function ContactWhatsAppCard({
   prefillMessage,
   className,
 }: Props): React.ReactElement {
-  const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "+91XXXXXXXXXX";
-  const sanitized = phone.replace(/[^\d]/g, "");
   const message =
     prefillMessage ??
     "Hello Siligurievent — I'd like to plan an event. Could we talk?";
-  const href = `https://wa.me/${sanitized}?text=${encodeURIComponent(message)}`;
+  const href = getWhatsAppHref(message);
 
   return (
     <aside

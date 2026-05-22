@@ -16,6 +16,8 @@ export type MarigoldPetalFallProps = {
   tone?: "ink" | "gold" | "brass" | "current" | "accent";
   /** Wrapper class — usually `absolute inset-0` to fill a positioned parent. */
   className?: string;
+  /** Optional inline style — typically used to override petal `color`. */
+  style?: React.CSSProperties;
 };
 
 type NavigatorConnectionLike = {
@@ -66,6 +68,7 @@ export function MarigoldPetalFall({
   spawnIntervalMs = 1200,
   tone = "gold",
   className,
+  style,
 }: MarigoldPetalFallProps): React.ReactElement {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -232,6 +235,7 @@ export function MarigoldPetalFall({
     <div
       ref={wrapRef}
       aria-hidden="true"
+      style={style}
       className={cn(
         "pointer-events-none relative overflow-hidden",
         toneClass[tone],

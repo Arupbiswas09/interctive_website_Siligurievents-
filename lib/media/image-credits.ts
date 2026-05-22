@@ -1,6 +1,10 @@
 /**
  * Attribution for stock photography (Unsplash License).
  * Shown in footer or /credits if required; kept for internal reference.
+ *
+ * The catalogue below is now consumed via `lib/media/seed-images.ts` for all
+ * CMS stub helpers (decor pairs, services, blog, hero pools). Local files
+ * under `/public/images/` carry their own attribution where applicable.
  */
 export const IMAGE_CREDITS = {
   source: "Unsplash",

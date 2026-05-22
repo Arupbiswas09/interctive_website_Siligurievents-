@@ -4,33 +4,29 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { DisplayHeading } from "@/components/ui/display-heading";
+import { getSiteSettings } from "@/lib/cms/site-settings";
 
 /**
  * Contact — Studio block.
  * Per docs/05-PAGE-SPECS.md §5.10 §4 + §5.
- *
- * Static map image placeholder (real Mapbox / Google static map wired in
- * Sprint 4 once owner provides exact pin and Mapbox key). Owner-supplied
- * address, hours, parking note.
  */
 
-// TODO (Sprint 4): source from CMS SiteSettings.
-const STUDIO = {
-  addressLines: [
-    "TODO — Studio address line 1",
-    "Sevoke Road, Siliguri",
-    "West Bengal 734001",
-  ],
-  hours: [
-    { day: "Mon – Sat", time: "9 AM – 9 PM IST" },
-    { day: "Sunday", time: "By appointment" },
-  ],
-  phone: "+91 XXXXX XXXXX",
-  email: "hello@siligurievent.com",
-  parking: "Visitor parking available on-site. Wheelchair accessible.",
-};
-
 export function ContactStudio(): React.ReactElement {
+  const settings = getSiteSettings();
+  const STUDIO = {
+    addressLines: [
+      settings.addressLine,
+      `${settings.addressCity}, ${settings.addressRegion} ${settings.addressPostalCode}`,
+    ],
+    hours: [
+      { day: "Mon – Sat", time: "10 AM – 7 PM IST" },
+      { day: "Sunday", time: "By appointment" },
+    ],
+    phone: settings.phoneDisplay,
+    phoneTel: settings.phoneTel,
+    email: settings.email,
+    parking: "Visitor parking available on-site. Wheelchair accessible.",
+  };
   return (
     <Section
       tone="elevated"
@@ -59,15 +55,13 @@ export function ContactStudio(): React.ReactElement {
                 "bg-[color:var(--color-bg)]",
               )}
             >
-              {/* biome-ignore lint/a11y/useAltText: decorative placeholder backdrop */}
-              <img
-                src="/images/map-placeholder.svg"
-                alt="Static map of Siligurievent studio on Sevoke Road, Siliguri"
-                width={1200}
-                height={900}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover opacity-90"
-                // TODO (Sprint 4): replace with /api/static-map?lat=…&lng=…
+              <div
+                aria-hidden="true"
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(circle at 30% 30%, rgba(200,152,96,0.18), transparent 55%), linear-gradient(135deg, rgba(58,26,36,0.35), rgba(14,11,8,0.92))",
+                }}
               />
               <div
                 aria-hidden="true"
@@ -134,7 +128,7 @@ export function ContactStudio(): React.ReactElement {
                 className="mt-[2px] h-5 w-5 shrink-0 text-[color:var(--color-accent)]"
               />
               <a
-                href={`tel:${STUDIO.phone.replace(/\s/g, "")}`}
+                href={`tel:${STUDIO.phoneTel}`}
                 className="text-[length:var(--text-base)] tracking-[var(--tracking-tight)] hover:text-[color:var(--color-accent)]"
               >
                 {STUDIO.phone}

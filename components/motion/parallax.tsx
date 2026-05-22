@@ -39,18 +39,21 @@ export function Parallax({
 
     const ctx = gsap.context(() => {
       // Distance to travel = speed * viewport height (cinematic but bounded).
-      const distance = speed * window.innerHeight;
+      // `invalidateOnRefresh` re-reads window.innerHeight on resize/orientation
+      // change so the parallax range stays correct.
+      const getDistance = (): number => speed * window.innerHeight;
       gsap.fromTo(
         el,
-        { yPercent: 0, y: -distance / 2 },
+        { yPercent: 0, y: () => -getDistance() / 2 },
         {
-          y: distance / 2,
+          y: () => getDistance() / 2,
           ease: "none",
           scrollTrigger: {
             trigger: el,
             start: "top bottom",
             end: "bottom top",
             scrub: true,
+            invalidateOnRefresh: true,
           },
         }
       );

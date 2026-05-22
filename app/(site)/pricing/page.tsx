@@ -4,10 +4,12 @@ import { PricingHero } from "@/components/marketing/sections/pricing-v2/pricing-
 import { PricingTierSection } from "@/components/marketing/sections/pricing-v2/pricing-tier-section";
 import { PricingCustomCalculatorTeaser } from "@/components/marketing/sections/pricing-v2/pricing-custom-calculator-teaser";
 import { PricingFaqs } from "@/components/marketing/sections/pricing-v2/pricing-faqs";
+import { PRICING_FAQS } from "@/components/marketing/sections/pricing-v2/pricing-faqs.data";
 import { PricingCtaCloser } from "@/components/marketing/sections/pricing-v2/pricing-cta-closer";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
 	buildBreadcrumb,
+	buildFAQ,
 	buildOfferCatalog,
 	jsonLdScript,
 	type PackageInput,
@@ -60,21 +62,23 @@ export default async function PricingPage(): Promise<React.ReactElement> {
 		{ name: "Home", path: "/" },
 		{ name: "Pricing", path: "/pricing" },
 	]);
+	const faqSchema = buildFAQ(
+		PRICING_FAQS.map((f) => ({ question: f.question, answer: f.answer })),
+	);
 
 	return (
 		<>
 			{jsonLdScript(offerCatalog)}
+			{jsonLdScript(faqSchema)}
 			{jsonLdScript(breadcrumb)}
 
-			<main id="main" className="relative">
-				<Suspense fallback={null}>
-					<PricingHero />
-					<PricingTierSection />
-					<PricingCustomCalculatorTeaser />
-					<PricingFaqs />
-					<PricingCtaCloser />
-				</Suspense>
-			</main>
+			<Suspense fallback={null}>
+				<PricingHero />
+				<PricingTierSection />
+				<PricingCustomCalculatorTeaser />
+				<PricingFaqs />
+				<PricingCtaCloser />
+			</Suspense>
 		</>
 	);
 }

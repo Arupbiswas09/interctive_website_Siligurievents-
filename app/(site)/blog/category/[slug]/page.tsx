@@ -25,7 +25,7 @@ type RouteParams = {
 };
 
 const FALLBACK_IMAGE =
-	"https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1600&q=80";
+	"/images/hero-02.webp";
 
 const CATEGORIES_FOR_CHIPS: ReadonlyArray<string> = [
 	"All",

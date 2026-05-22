@@ -32,7 +32,7 @@ interface CaseStudyNextProjectTeaserProps {
 }
 
 const FALLBACK_NEXT =
-  "https://images.unsplash.com/photo-1590075865003-e48277fda558?auto=format&fit=crop&w=2400&q=80";
+  "/images/work/work-01.webp";
 
 export function CaseStudyNextProjectTeaser({
   nextProject,

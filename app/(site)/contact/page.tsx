@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { Container } from "@/components/ui/container";
+import { Section } from "@/components/ui/section";
 import { ContactHeroEditorial } from "@/components/marketing/sections/contact-v2/contact-hero-editorial";
 import { ContactPromiseStrip } from "@/components/marketing/sections/contact-v2/contact-promise-strip";
-import { ContactFormCard } from "@/components/marketing/sections/contact-v2/contact-form-card";
 import { ContactChannels } from "@/components/marketing/sections/contact-v2/contact-channels";
 import { ContactStudioLocation } from "@/components/marketing/sections/contact-v2/contact-studio-location";
+import { InquiryForm } from "@/components/marketing/inquiry-form";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
   buildBreadcrumb,
@@ -11,6 +14,7 @@ import {
   jsonLdScript,
   SITE_URL,
 } from "@/lib/seo/schemas";
+import { getSiteSettings } from "@/lib/cms/site-settings";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({
@@ -28,35 +32,6 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-// TODO (Sprint 4): source from CMS SiteSettings.
-const SITE_SETTINGS = {
-  businessName: "Siligurievent",
-  tagline:
-    "Cinematic event decorators in Siliguri, North Bengal — weddings, receptions, sangeet, haldi, corporate, pujas.",
-  phone: "+91 XXXXX XXXXX",
-  email: "hello@siligurievent.com",
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "+91XXXXXXXXXX",
-  addressLine1: "Hill Cart Road",
-  addressLine2: "Siliguri",
-  city: "Siliguri",
-  state: "WB",
-  pincode: "734001",
-  country: "IN",
-  openingHours: [
-    { day: "Monday", open: "11:00", close: "19:00" },
-    { day: "Tuesday", open: "11:00", close: "19:00" },
-    { day: "Wednesday", open: "11:00", close: "19:00" },
-    { day: "Thursday", open: "11:00", close: "19:00" },
-    { day: "Friday", open: "11:00", close: "19:00" },
-    { day: "Saturday", open: "11:00", close: "19:00" },
-    { day: "Sunday", open: "10:00", close: "18:00" },
-  ],
-} as const;
-
-/**
- * Minimal ContactPage schema builder — lives here until we promote it to
- * `lib/seo/schemas.ts`. Per docs/07-SEO-IMPL.md §7.6.
- */
 function buildContactPageSchema(): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
@@ -73,7 +48,30 @@ function buildContactPageSchema(): Record<string, unknown> {
 }
 
 export default async function ContactPage(): Promise<React.ReactElement> {
-  const localBusiness = buildLocalBusiness(SITE_SETTINGS);
+  const settings = getSiteSettings();
+  const localBusiness = buildLocalBusiness({
+    businessName: "Siligurievent",
+    tagline:
+      "Cinematic event decorators in Siliguri, North Bengal — weddings, receptions, sangeet, haldi, corporate, pujas.",
+    phone: settings.phoneDisplay,
+    email: settings.email,
+    whatsappNumber: settings.whatsappNumber,
+    addressLine1: settings.addressLine,
+    city: settings.addressCity,
+    state: settings.addressRegion,
+    pincode: settings.addressPostalCode,
+    country: settings.addressCountry,
+    founderName: settings.founderName,
+    openingHours: [
+      { day: "Monday", open: "10:00", close: "19:00" },
+      { day: "Tuesday", open: "10:00", close: "19:00" },
+      { day: "Wednesday", open: "10:00", close: "19:00" },
+      { day: "Thursday", open: "10:00", close: "19:00" },
+      { day: "Friday", open: "10:00", close: "19:00" },
+      { day: "Saturday", open: "10:00", close: "19:00" },
+      { day: "Sunday", open: "10:00", close: "18:00", closed: false },
+    ],
+  });
   const contactPage = buildContactPageSchema();
   const breadcrumb = buildBreadcrumb([
     { name: "Home", path: "/" },
@@ -86,13 +84,17 @@ export default async function ContactPage(): Promise<React.ReactElement> {
       {jsonLdScript(localBusiness)}
       {jsonLdScript(breadcrumb)}
 
-      <main id="main" className="relative">
-        <ContactHeroEditorial />
-        <ContactPromiseStrip />
-        <ContactFormCard />
-        <ContactChannels />
-        <ContactStudioLocation />
-      </main>
+      <ContactHeroEditorial />
+      <ContactPromiseStrip />
+      <Section spacing="lg" id="inquiry">
+        <Container>
+          <Suspense fallback={null}>
+            <InquiryForm sourcePage="/contact" />
+          </Suspense>
+        </Container>
+      </Section>
+      <ContactChannels />
+      <ContactStudioLocation />
     </>
   );
 }

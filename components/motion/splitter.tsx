@@ -75,6 +75,11 @@ export function SplitterReveal({
         scrollTrigger: scrollTrigger
           ? { trigger: el, start, once: true }
           : undefined,
+        onComplete: () => {
+          for (const node of targets) {
+            (node as HTMLElement).style.willChange = "auto";
+          }
+        },
       });
     }, el);
 

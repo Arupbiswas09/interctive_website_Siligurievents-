@@ -67,9 +67,8 @@ export function AboutHeroPortrait({
         transform: active ? "scale(1.02)" : "scale(1)",
         filter: active ? "hue-rotate(2deg) saturate(1.08)" : "none",
       }}
-      aria-label="TODO: founder portrait alt text"
+      aria-label="Portrait of the studio founder"
     >
-      {/* TODO: replace placeholder div with next/image once ABOUT-01 lands */}
       <div
         aria-hidden="true"
         className="absolute inset-0"

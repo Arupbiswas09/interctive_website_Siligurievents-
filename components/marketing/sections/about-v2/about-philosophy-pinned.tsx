@@ -134,6 +134,8 @@ export function AboutPhilosophyPinned(): React.ReactElement {
         const prevDot = dots[i - 1];
         const nextDot = dots[i];
 
+        if (!prevChapter || !nextChapter || !prevOrn || !nextOrn || !prevDot || !nextDot) continue;
+
         tl.to(prevChapter, { autoAlpha: 0, y: -24, duration: 0.5 }, seg)
           .to(prevOrn, { autoAlpha: 0, scale: 0.92, duration: 0.5 }, seg)
           .to(

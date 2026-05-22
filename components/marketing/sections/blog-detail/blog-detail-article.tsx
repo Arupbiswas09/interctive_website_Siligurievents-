@@ -103,7 +103,7 @@ export function BlogDetailArticle({
 							</p>
 
 							<InlineImage
-								src="https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1600&q=80"
+								src="/images/hero-02.webp"
 								alt="Marigold and bamboo composition set up for dawn light at a Siliguri wedding."
 								caption="Marigold + bamboo, designed for dawn light. Siliguri, March 2026."
 							/>

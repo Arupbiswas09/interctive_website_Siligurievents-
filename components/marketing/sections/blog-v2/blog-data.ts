@@ -23,7 +23,7 @@ export const POSTS: ReadonlyArray<Post> = [
 		category: "Pre-wedding",
 		readTime: 8,
 		image:
-			"https://images.unsplash.com/photo-1607261504259-c9bf36e8e6e8?auto=format&fit=crop&w=1600&q=80",
+			"/images/marketing/work-05.jpg",
 		featured: true,
 		date: "2025-09-12",
 	},
@@ -35,7 +35,7 @@ export const POSTS: ReadonlyArray<Post> = [
 		category: "Florals",
 		readTime: 5,
 		image:
-			"https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=1600&q=80",
+			"/images/marketing/work-02.jpg",
 		featured: false,
 		date: "2025-08-22",
 	},
@@ -47,7 +47,7 @@ export const POSTS: ReadonlyArray<Post> = [
 		category: "Destination",
 		readTime: 7,
 		image:
-			"https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1600&q=80",
+			"/images/hero-01.webp",
 		featured: false,
 		date: "2025-07-30",
 	},
@@ -58,7 +58,7 @@ export const POSTS: ReadonlyArray<Post> = [
 		category: "Lighting",
 		readTime: 6,
 		image:
-			"https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?auto=format&fit=crop&w=1600&q=80",
+			"/images/marketing/work-02.jpg",
 		featured: false,
 		date: "2025-07-04",
 	},
@@ -70,7 +70,7 @@ export const POSTS: ReadonlyArray<Post> = [
 		category: "Planning",
 		readTime: 9,
 		image:
-			"https://images.unsplash.com/photo-1530023367847-a683933f4172?auto=format&fit=crop&w=1600&q=80",
+			"/images/hero-02.webp",
 		featured: false,
 		date: "2025-06-18",
 	},
@@ -81,7 +81,7 @@ export const POSTS: ReadonlyArray<Post> = [
 		category: "Studio notes",
 		readTime: 4,
 		image:
-			"https://images.unsplash.com/photo-1535378620166-273708d44e4c?auto=format&fit=crop&w=1600&q=80",
+			"/images/marketing/work-05.jpg",
 		featured: false,
 		date: "2025-05-30",
 	},
