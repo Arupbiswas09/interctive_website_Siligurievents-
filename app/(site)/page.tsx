@@ -57,18 +57,20 @@ function buildSiteSettings(): SiteSettingsInput {
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
-    title: "Siligurievent — Cinematic event decor in North Bengal",
+    title: "Siligurievent — Wedding, Balloon & Event Decoration in Siliguri",
     description:
-      "Editorial wedding, haldi, sangeet, reception and corporate decor across Siliguri, Darjeeling and the Dooars. Designed like film stills.",
+      "Wedding, balloon and event decoration in Siliguri & North Bengal — birthdays, weddings, haldi, sangeet, reception and corporate, designed like film stills.",
     path: "/",
     locale: "en",
     keywords: [
-      "wedding decorators Siliguri",
-      "event decorators North Bengal",
+      "balloon decoration Siliguri",
+      "wedding decoration Siliguri",
+      "artificial flower decoration Siliguri",
+      "decoration in Siliguri",
+      "event decorators Siliguri",
+      "birthday decoration Siliguri",
       "Bengali wedding decoration",
-      "haldi mehendi sangeet decor",
       "destination wedding Darjeeling",
-      "Durga Puja pandal design",
     ],
   });
 }

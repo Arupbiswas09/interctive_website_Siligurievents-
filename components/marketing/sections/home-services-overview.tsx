@@ -65,9 +65,9 @@ const SUB_TILES: ReadonlyArray<ServiceTile> = [
     hue: "wine",
   },
   {
-    slug: "birthday-party",
-    label: "Birthday",
-    tagline: "Milestone birthdays styled like editorial covers.",
+    slug: "balloon-decoration",
+    label: "Balloon Decor",
+    tagline: "Birthday & event balloon decoration, styled clean.",
     imageIndex: 6,
     hue: "neutral",
   },

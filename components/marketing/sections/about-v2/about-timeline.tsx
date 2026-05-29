@@ -32,7 +32,7 @@ const TIMELINE: readonly Milestone[] = [
   {
     year: 2014,
     title: "Studio founded",
-    body: "Started in a one-room rental on Hill Cart Road. First event was my sister's mehendi.",
+    body: "Started in a one-room rental in Darjeeling More. First event was my sister's mehendi.",
     image:
       "/images/work/work-04.webp",
   },

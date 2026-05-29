@@ -15,15 +15,17 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/ui/container";
 import { CeremonyOrnament } from "@/components/illustrations/ceremony-ornaments";
 import { useReducedMotion } from "@/lib/motion/use-reduced-motion";
+import { getWhatsAppHref } from "@/lib/cms/site-settings";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const WHATSAPP_HREF =
-  "https://wa.me/919800000000?text=Hello%20Siliguri%20Event%2C%20I%27d%20like%20to%20visit%20the%20studio.";
+const WHATSAPP_HREF = getWhatsAppHref(
+  "Hello Siligurievent, I'd like to visit the studio.",
+);
 const DIRECTIONS_HREF =
-  "https://maps.google.com/?q=Hill+Cart+Road,+Siliguri,+West+Bengal";
+  "https://maps.google.com/?q=Siligurievent+Darjeeling+More+Siliguri+West+Bengal";
 
 export function AboutCtaCloser(): React.ReactElement {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -129,7 +131,7 @@ export function AboutCtaCloser(): React.ReactElement {
               color: "color-mix(in oklab, var(--color-bg) 80%, transparent)",
             }}
           >
-            Hill Cart Road, Siliguri · weekdays 11–7. Tea and a moodboard,
+            Darjeeling More, Siliguri · weekdays 11–7. Tea and a moodboard,
             usually in that order.
           </p>
 

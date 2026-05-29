@@ -30,6 +30,7 @@ This is a **greenfield Next.js 16 App Router project** with a built-in Payload C
 | 10 | [docs/10-PERFORMANCE.md](./docs/10-PERFORMANCE.md) | Web Vitals targets, optimization |
 | 11 | [docs/11-DEPLOYMENT.md](./docs/11-DEPLOYMENT.md) | Vercel, domain, env, integrations |
 | 12 | [docs/12-ROADMAP.md](./docs/12-ROADMAP.md) | Sprint-by-sprint execution plan |
+| — | [docs/SEO-RANKING-PLAN.md](./docs/SEO-RANKING-PLAN.md) | Owner action plan to rank for "Siliguri balloon/decoration" |
 
 ## Quick stack summary
 

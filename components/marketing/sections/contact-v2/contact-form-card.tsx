@@ -565,7 +565,7 @@ function BenefitsCard(): React.ReactElement {
 
         <div className="mt-[var(--space-2)] border-t border-[color:var(--color-border)] pt-[var(--space-4)]">
           <p className="font-mono text-[length:var(--text-xs)] tracking-wide text-[color:var(--color-ink-muted)]">
-            Studio: Hill Cart Road, Siliguri · 14 years
+            Studio: Darjeeling More, Siliguri · 14 years
           </p>
         </div>
       </div>

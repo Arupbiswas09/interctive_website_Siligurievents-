@@ -44,14 +44,14 @@ export function AboutOrigin(): React.ReactElement {
               size="lg"
               split
               splitMode="words"
-              text="A studio built between Sevoke Road and a coldroom of jasmines."
+              text="A studio built between Darjeeling More and a coldroom of jasmines."
               className="max-w-[22ch]"
             />
 
             <div className="flex max-w-[60ch] flex-col gap-[var(--space-4)] text-[length:var(--text-base)] leading-relaxed text-[color:var(--color-ink-muted)]">
               <RevealOnScroll delay={0.1} as="p">
-Siligurievent began as a one-person decoration practice on
-                Sevoke Road, taking on Bengali weddings and Annaprashan
+Siligurievent began as a one-person decoration practice in
+                Darjeeling More, taking on Bengali weddings and Annaprashan
                 ceremonies for friends of friends. The first mandap was built
                 in a borrowed garage, with bamboo from the timber yard down
                 the road.

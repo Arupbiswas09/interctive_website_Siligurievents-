@@ -533,6 +533,145 @@ const MOCK_SERVICES: ReadonlyArray<Service> = [
   },
   // ── Family rituals ──────────────────────────────────────────────────────
   {
+    slug: "balloon-decoration",
+    name: "Balloon Decoration",
+    nameHi: "बैलून सजावट",
+    category: "family-rituals",
+    order: 0,
+    tagline: "Balloon decoration in Siliguri — arches, ceilings and photo walls, styled clean.",
+    shortDescription:
+      "Birthday, anniversary and baby-shower balloon decoration in Siliguri — organic arches, ceiling clouds, number columns and themed photo walls.",
+    longDescription:
+      "Balloon decoration is the fastest way to turn a hall, terrace or shop into an event — and the easiest to get wrong. We build organic balloon arches, ceiling installations, garlands, age and name columns, and step-and-repeat photo walls in a palette chosen for your theme, not a bag of mixed primaries. Same-day setups across Siliguri for first birthdays, sweet-sixteens, anniversaries, godh bharai, retirements, shop and showroom launches, and welcome-home surprises. Chrome, pastel, metallic, neon or classic — we hand-tie every cluster and brief a crew for on-time installation.",
+    inclusions: [
+      {
+        title: "Balloon work",
+        items: [
+          "Organic balloon arches & garlands (custom palette)",
+          "Ceiling balloon clouds & drops",
+          "Age, number & name balloon columns",
+          "Chrome, pastel, metallic & confetti finishes",
+        ],
+      },
+      {
+        title: "Backdrops & props",
+        items: [
+          "Themed photo wall / step-and-repeat",
+          "Cake table & dessert-station styling",
+          "Custom name & age signage",
+        ],
+      },
+      {
+        title: "Add-ons",
+        items: [
+          "Floral + balloon combination installations",
+          "LED & fairy-light wash",
+          "Same-day setup & teardown",
+        ],
+      },
+    ],
+    process: DEFAULT_PROCESS,
+    signatureProjects: STUB_PROJECTS("balloon-decoration", "family-rituals"),
+    faqs: [
+      {
+        question: "Do you do balloon decoration anywhere in Siliguri?",
+        answer:
+          "Yes — homes, banquet halls, terraces, restaurants and showrooms across Siliguri, plus Bagdogra, Matigara and the wider North Bengal belt. Crew travel outside the city is quoted separately.",
+      },
+      {
+        question: "How much does balloon decoration cost in Siliguri?",
+        answer:
+          "Simple birthday setups start in the ₹ band; larger arches, ceiling work and themed photo walls scale up. Final quotes depend on arch size, the finish (chrome and metallic cost more than plain) and whether flowers or lighting are added.",
+      },
+      {
+        question: "Can you set up the same day or at short notice?",
+        answer:
+          "Often yes for standard birthday and surprise setups, subject to crew availability. Share the date, venue and a reference photo on WhatsApp and we will confirm quickly.",
+      },
+      {
+        question: "Do you match a theme or cartoon character?",
+        answer:
+          "We colour-match any palette and build around a theme — jungle, princess, superhero, pastel, gold-and-white. Licensed character cut-outs are arranged on request.",
+      },
+    ],
+    relatedSlugs: ["birthday-party", "anniversary", "baby-shower-godh-bharai", "private-celebrations"],
+    priceBand: "₹",
+    priceContext:
+      "Most balloon setups are a single room, terrace or shopfront — priced by arch size, finish and add-ons.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "balloon-decoration"),
+  },
+  {
+    slug: "artificial-flower-decoration",
+    name: "Artificial Flower Decoration",
+    nameHi: "कृत्रिम फूल सजावट",
+    category: "family-rituals",
+    order: 0,
+    tagline: "Artificial flower decoration in Siliguri — gates, stages and backdrops that last all day.",
+    shortDescription:
+      "Artificial and silk flower decoration in Siliguri — gates, stage backdrops, pillars and garlands for weddings, receptions, homes and shopfronts.",
+    longDescription:
+      "Artificial flower decoration gives you the fullness of a flower wall without wilting halfway through the evening — ideal for long ceremonies, outdoor heat, and budgets that want reusable impact. We work with premium silk and latex blooms in marigold, rose, orchid, hydrangea and cherry-blossom, building entrance gates, stage and selfie backdrops, pillar wraps, hanging installations, table runners and garlands. Palette-matched to your theme and mixed with fresh flowers where it counts. Setups across Siliguri for weddings, receptions, engagements, housewarmings, mandaps, shop launches and home decor — installed by our own crew and dismantled cleanly.",
+    inclusions: [
+      {
+        title: "Floral installations",
+        items: [
+          "Entrance gates & flower walls",
+          "Stage & selfie backdrops",
+          "Pillar wraps & hanging blooms",
+        ],
+      },
+      {
+        title: "Styling",
+        items: [
+          "Silk & latex blooms (marigold, rose, orchid, hydrangea)",
+          "Table runners, centrepieces & garlands",
+          "Fresh + artificial flower combinations",
+        ],
+      },
+      {
+        title: "Add-ons",
+        items: [
+          "Drapes, fairy lights & fabric backdrops",
+          "Reusable / rental flower setups",
+          "Same-day setup & teardown",
+        ],
+      },
+    ],
+    process: DEFAULT_PROCESS,
+    signatureProjects: STUB_PROJECTS(
+      "artificial-flower-decoration",
+      "family-rituals",
+    ),
+    faqs: [
+      {
+        question:
+          "Is artificial flower decoration cheaper than fresh flowers in Siliguri?",
+        answer:
+          "Usually yes for large installations — artificial flower walls and gates cost less than the equivalent in fresh blooms and can be reused, while fresh flowers are best for fragrance and close-up moments. Many clients mix both, and we advise the right balance for your budget.",
+      },
+      {
+        question: "Do the artificial flowers look real?",
+        answer:
+          "We use premium silk and latex flowers, not plastic novelty stems, so backdrops and gates read beautifully on camera and in person. We can show samples before the event.",
+      },
+      {
+        question: "Do you do artificial flower decoration for home functions?",
+        answer:
+          "Yes — housewarmings, poojas, birthdays, anniversaries and small home weddings across Siliguri, as well as banquet halls and shopfronts. Setups scale from a single backdrop to a full venue.",
+      },
+      {
+        question: "Can the setup be reused or rented?",
+        answer:
+          "Many of our artificial flower installations are available on a rental basis, which keeps costs down for repeat functions. Ask us about reusable gate, backdrop and pillar options.",
+      },
+    ],
+    relatedSlugs: ["balloon-decoration", "wedding", "reception", "private-celebrations"],
+    priceBand: "₹₹",
+    priceContext:
+      "Priced by the size and number of installations — a single backdrop costs far less than a full gate-plus-stage-plus-mandap set.",
+    heroImageUrl: pickSeedImage(SEED_HERO, "artificial-flower-decoration"),
+  },
+  {
     slug: "birthday-party",
     name: "Birthday Party",
     nameHi: "जन्मदिन समारोह",

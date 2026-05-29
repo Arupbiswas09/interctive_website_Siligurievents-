@@ -40,7 +40,7 @@ export function ContactStudio(): React.ReactElement {
           <DisplayHeading
             as="h2"
             size="lg"
-            text="Find us on Sevoke Road."
+            text="Find us in Darjeeling More."
             className="text-balance"
           />
         </div>
@@ -78,7 +78,7 @@ export function ContactStudio(): React.ReactElement {
                   className="h-4 w-4 text-[color:var(--color-accent)]"
                 />
                 <span className="text-[length:var(--text-sm)] tracking-[var(--tracking-tight)]">
-                  Sevoke Road, Siliguri
+                  Darjeeling More, Siliguri
                 </span>
               </div>
             </div>

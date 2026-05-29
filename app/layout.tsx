@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s · Siligurievent",
   },
   description:
-    "Editorial event decoration in Siliguri & North Bengal. Weddings, receptions, sangeet, haldi, corporate, festival pujas — designed like film stills.",
+    "Wedding, balloon and event decoration in Siliguri & North Bengal. Weddings, receptions, sangeet, haldi, birthdays, corporate and festival pujas — designed like film stills.",
   applicationName: "Siligurievent",
   authors: [{ name: "Siligurievent" }],
   creator: "Siligurievent",
@@ -21,22 +21,46 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Siligurievent",
-    title: "Siligurievent — Cinematic event decor in North Bengal",
+    title: "Siligurievent — Wedding, balloon & event decoration in Siliguri",
     description:
-      "Editorial event decoration in Siliguri & North Bengal. Weddings, receptions, sangeet, haldi, corporate, festival pujas.",
+      "Wedding, balloon and event decoration in Siliguri & North Bengal. Weddings, receptions, sangeet, haldi, birthdays, corporate and festival pujas.",
     url: "https://siligurievent.com",
     locale: "en_IN",
+    images: [
+      {
+        url: "/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Siligurievent — wedding, balloon and event decoration in Siliguri",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Siligurievent — Cinematic event decor in North Bengal",
+    title: "Siligurievent — Wedding, balloon & event decoration in Siliguri",
     description:
-      "Editorial event decoration in Siliguri & North Bengal. Weddings, receptions, sangeet, haldi, corporate, festival pujas.",
+      "Wedding, balloon and event decoration in Siliguri & North Bengal. Weddings, receptions, sangeet, haldi, birthdays, corporate and festival pujas.",
+    images: ["/og-default.jpg"],
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  // Paste the Google Search Console verification code into
+  // NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION (Vercel env) to verify ownership.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
 };
 

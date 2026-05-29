@@ -74,7 +74,7 @@ const PRIVACY_CHAPTERS: ReadonlyArray<LegalChapter> = [
     title: "Contact us",
     body: [
       "Privacy questions: hello@siligurievent.com",
-      "Postal: Siliguri Event Studio, Hill Cart Road, Siliguri, West Bengal 734001",
+      "Postal: Siligurievent, Darjeeling More, Siliguri, West Bengal 734001",
     ],
   },
 ];

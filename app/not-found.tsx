@@ -7,6 +7,7 @@ import { SkipToContent } from "@/components/ui/skip-to-content";
 import { ButtonStyles } from "@/components/ui/button";
 import { NotFoundContent } from "@/components/marketing/sections/not-found-content";
 import { buildNoIndexMetadata } from "@/lib/seo/metadata";
+import { getWhatsAppHref } from "@/lib/cms/site-settings";
 
 /**
  * Global 404 — branded, full viewport.
@@ -26,9 +27,9 @@ import { buildNoIndexMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildNoIndexMetadata("404 — Page eloped");
 
-const WHATSAPP_HREF =
-  // TODO: source from CMS SiteSettings once Sprint 2 lands Payload.
-  "https://wa.me/91000000000?text=Hi%20Siligurievent%20%E2%80%94%20I%20landed%20on%20a%20404.";
+const WHATSAPP_HREF = getWhatsAppHref(
+  "Hi Siligurievent — I landed on a 404.",
+);
 
 export default function NotFound(): React.ReactElement {
   return (

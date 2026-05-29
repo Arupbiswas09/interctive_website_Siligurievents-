@@ -32,11 +32,11 @@ export interface SiteSettings {
 }
 
 const DEFAULTS: SiteSettings = {
-  phoneDisplay: "+91 98320 12345",
-  phoneTel: "+919832012345",
-  whatsappNumber: "919832012345",
+  phoneDisplay: "+91 62940 92551",
+  phoneTel: "+916294092551",
+  whatsappNumber: "916294092551",
   email: "hello@siligurievent.com",
-  addressLine: "Sevoke Road",
+  addressLine: "Darjeeling More",
   addressCity: "Siliguri",
   addressRegion: "West Bengal",
   addressPostalCode: "734001",

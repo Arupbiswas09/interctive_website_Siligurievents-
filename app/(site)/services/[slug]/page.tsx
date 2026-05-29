@@ -15,6 +15,7 @@ import {
   getServiceBySlug,
   getServiceSlugs,
 } from "@/lib/cms/services";
+import { getSiteSettings } from "@/lib/cms/site-settings";
 import { ServiceDetailHero } from "@/components/marketing/sections/service-detail-hero";
 import { ServiceInclusions } from "@/components/marketing/sections/service-inclusions";
 import { ServiceSignatureProjects } from "@/components/marketing/sections/service-signature-projects";
@@ -69,28 +70,43 @@ export async function generateMetadata({
     });
   }
 
+  // Avoid "Decoration decoration …" when the service name already ends in
+  // "Decor" (e.g. "Balloon Decoration"); otherwise append "decoration".
+  const lowerName = service.name.toLowerCase();
+  const keywordBase = lowerName.includes("decor")
+    ? lowerName
+    : `${lowerName} decoration`;
+
   return buildPageMetadata({
-    title: `${service.name} decoration in Siliguri`,
+    title: lowerName.includes("decor")
+      ? `${service.name} in Siliguri`
+      : `${service.name} decoration in Siliguri`,
     description: service.shortDescription,
     path: `/services/${service.slug}`,
     locale: "en",
     keywords: [
-      `${service.name.toLowerCase()} decorator Siliguri`,
-      `${service.name.toLowerCase()} decoration North Bengal`,
+      `${keywordBase} Siliguri`,
+      `${keywordBase} North Bengal`,
       "event decorators Siliguri",
       "wedding decorator Siliguri",
     ],
   });
 }
 
-// Stand-in until Sprint 2 wires Payload's `siteSettings` global.
-// All public-facing fields are placeholders — schema accuracy is preserved
-// (correct shape, correct city, no fake business numbers).
+// Full NAP for the service-page LocalBusiness JSON-LD, sourced from the single
+// contact source of truth so phone + address match the home page and footer.
+const CONTACT = getSiteSettings();
 const SITE_SETTINGS_STUB: SiteSettingsInput = {
   businessName: "Siligurievent",
-  city: "Siliguri",
-  state: "West Bengal",
-  country: "IN",
+  phone: CONTACT.phoneDisplay,
+  whatsappNumber: CONTACT.whatsappNumber,
+  email: CONTACT.email,
+  addressLine1: CONTACT.addressLine,
+  city: CONTACT.addressCity,
+  state: CONTACT.addressRegion,
+  pincode: CONTACT.addressPostalCode,
+  country: CONTACT.addressCountry,
+  founderName: CONTACT.founderName,
 };
 
 // ─────────────────────────────────────────────────────────────────────────────

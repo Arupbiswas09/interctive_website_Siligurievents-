@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils";
 
 const ADDRESS = {
   line1: "Siligurievent Studio",
-  line2: "Hill Cart Road",
+  line2: "Darjeeling More",
   line3: "Siliguri, West Bengal 734001",
   hours: "Weekdays · 11 AM – 7 PM",
   weekend: "Saturdays · by appointment",
   directionsHref:
-    "https://www.google.com/maps/dir/?api=1&destination=Siliguri+Event+Hill+Cart+Road+Siliguri",
+    "https://www.google.com/maps/dir/?api=1&destination=Siligurievent+Darjeeling+More+Siliguri",
 } as const;
 
 /**
@@ -245,7 +245,7 @@ function StylisedMap(): React.ReactElement {
             fontFamily="serif"
             fontStyle="italic"
           >
-            Siliguri Event · Hill Cart Road
+            Siligurievent · Darjeeling More
           </text>
         </g>
       </svg>

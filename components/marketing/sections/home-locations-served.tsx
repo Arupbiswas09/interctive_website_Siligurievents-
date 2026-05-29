@@ -43,7 +43,7 @@ type Pin = {
 };
 
 const PINS: ReadonlyArray<Pin> = [
-  // Anchor — the studio sits in Siliguri (Sevoke Road).
+  // Anchor — the studio sits in Siliguri (Darjeeling More).
   { slug: "siliguri", label: "Siliguri", lat: 26.7271, lng: 88.3953 },
   { slug: "bagdogra", label: "Bagdogra", lat: 26.7022, lng: 88.3170, labelOffsetY: 4 },
   { slug: "darjeeling", label: "Darjeeling", lat: 27.041, lng: 88.2663 },
